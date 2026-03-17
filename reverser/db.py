@@ -60,9 +60,21 @@ class Database:
         self.initialize()
 
     def initialize(self) -> None:
-        """Create tables if they do not exist."""
+        """Create tables if they do not exist, and migrate new columns."""
         self.conn.executescript(DDL)
         self.conn.commit()
+        # Safe migration: add new columns to existing databases
+        for col, defn in [
+            ("wrapper_path", "TEXT"),
+            ("execution_method", "TEXT"),
+        ]:
+            try:
+                self.conn.execute(
+                    f"ALTER TABLE functions ADD COLUMN {col} {defn}"
+                )
+                self.conn.commit()
+            except sqlite3.OperationalError:
+                pass  # Column already exists
 
     def close(self) -> None:
         """Close the database connection."""
@@ -165,6 +177,23 @@ class Database:
             (qualified_name,),
         ).fetchone()
         return int(row["id"]) if row else None
+
+    def update_wrapper(
+        self,
+        function_id: int,
+        wrapper_path: str,
+        execution_method: str,
+    ) -> None:
+        """Set the wrapper file path and execution method for a function."""
+        self.conn.execute(
+            """
+            UPDATE functions
+            SET wrapper_path = ?, execution_method = ?
+            WHERE id = ?
+            """,
+            (wrapper_path, execution_method, function_id),
+        )
+        self.conn.commit()
 
     def get_all_functions(self) -> List[Dict[str, Any]]:
         """Return all function records as dicts."""

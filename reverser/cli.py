@@ -329,3 +329,131 @@ def classify(
 
     render_stats(db.get_stats(), console)
     db.close()
+
+
+@cli.command("generate-wrappers")
+@click.option(
+    "--db",
+    "db_path",
+    default="tools.db",
+    show_default=True,
+    help="Path to the SQLite database file.",
+)
+@click.option(
+    "--program",
+    required=True,
+    help=(
+        "Path to the executable (subprocess/python_sdk) "
+        "or COM ProgID (com), e.g. 'HYSYS.Application'."
+    ),
+)
+@click.option(
+    "--method",
+    default="subprocess_cli",
+    show_default=True,
+    type=click.Choice(["subprocess_cli", "com", "python_sdk", "generic"]),
+    help="How the program is invoked.",
+)
+@click.option(
+    "--wrappers-dir",
+    default="wrappers",
+    show_default=True,
+    help="Directory where generated wrapper .py files are saved.",
+)
+@click.option(
+    "--language",
+    default=None,
+    help="Only generate wrappers for functions in this language (e.g. Fortran).",
+)
+@click.option(
+    "--backend",
+    default="claude",
+    show_default=True,
+    type=click.Choice(["claude", "openai", "ollama"]),
+    help="LLM backend to use.",
+)
+@click.option(
+    "--ollama-host",
+    default=None,
+    help="Ollama server URL.",
+)
+@click.option(
+    "--ollama-model",
+    default=None,
+    help="Ollama model name.",
+)
+@click.option(
+    "--no-color",
+    is_flag=True,
+    default=False,
+    help="Disable rich terminal colors.",
+)
+def generate_wrappers(
+    db_path: str,
+    program: str,
+    method: str,
+    wrappers_dir: str,
+    language: Optional[str],
+    backend: str,
+    ollama_host: Optional[str],
+    ollama_model: Optional[str],
+    no_color: bool,
+) -> None:
+    """Generate Python wrapper functions for non-Python action tools.
+
+    For each action function discovered in the scanned codebase, uses an LLM
+    to write a Python function that correctly interacts with the target program
+    (subprocess, COM automation, or Python SDK). The wrappers are saved as .py
+    files and registered in the database so the MCP server can call them.
+
+    Examples:
+
+    \\b
+    # AERMOD (Fortran CLI tool)
+    reverser generate-wrappers --db aermod.db \\
+        --program /path/to/aermod.exe --method subprocess_cli
+
+    \\b
+    # HYSYS (Windows COM)
+    reverser generate-wrappers --db hysys.db \\
+        --program HYSYS.Application --method com
+
+    \\b
+    # MODFLOW via FloPy (Python SDK)
+    reverser generate-wrappers --db modflow.db \\
+        --program flopy --method python_sdk
+    """
+    if not Path(db_path).exists():
+        raise click.ClickException(
+            f"Database '{db_path}' not found. Run 'reverser scan' first."
+        )
+
+    from reverser.adapters.wrapper_gen import generate_wrappers_for_actions
+
+    console = Console(no_color=no_color, highlight=False)
+    db = Database(db_path)
+    llm = _make_llm(backend, ollama_host, ollama_model)
+    wrappers_path = Path(wrappers_dir)
+
+    console.print(
+        f"\n[bold]Generating Python wrappers[/bold] → [dim]{wrappers_dir}/[/dim]"
+    )
+    console.print(f"  Program : [cyan]{program}[/cyan]")
+    console.print(f"  Method  : [cyan]{method}[/cyan]")
+    if language:
+        console.print(f"  Language: [cyan]{language}[/cyan]")
+    console.print()
+
+    count = generate_wrappers_for_actions(
+        db=db,
+        llm=llm,
+        program_path=program,
+        exec_method=method,
+        wrappers_dir=wrappers_path,
+        language_filter=language,
+    )
+
+    console.print(
+        f"[green]Generated[/green] {count} wrapper(s) in [dim]{wrappers_dir}/[/dim]"
+    )
+    db.close()

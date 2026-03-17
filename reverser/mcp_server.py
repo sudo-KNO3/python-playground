@@ -103,12 +103,84 @@ def _build_mcp_tool(func_record: Dict[str, Any]) -> Optional[Any]:
     )
 
 
+def _dispatch_execution(
+    func_record: Dict[str, Any],
+    file_path: str,
+    language: str,
+    arguments: Dict[str, Any],
+) -> str:
+    """Select and run the appropriate execution adapter for a function.
+
+    Priority:
+    1. wrapper — if wrapper_path is set and the file exists
+    2. python_import — if language is Python
+    3. execution_method from DB (subprocess, com)
+    4. Informational error
+
+    Args:
+        func_record: Function dict from the database.
+        file_path: Path to the source file.
+        language: Language of the source file.
+        arguments: Arguments to pass to the function.
+
+    Returns:
+        String output from the execution.
+    """
+    wrapper_path = func_record.get("wrapper_path") or ""
+    exec_method = func_record.get("execution_method") or ""
+
+    # 1. Wrapper file (highest priority — works for any language)
+    if wrapper_path and __import__("pathlib").Path(wrapper_path).exists():
+        from reverser.adapters.wrapper_adapter import WrapperAdapter
+
+        return WrapperAdapter().execute(func_record, arguments)
+
+    # 2. Python import (for Python source files without a wrapper)
+    if language == "Python":
+        func_callable = _load_python_function(
+            file_path, func_record["qualified_name"]
+        )
+        if func_callable is None:
+            return (
+                f"Error: could not load function "
+                f"'{func_record['qualified_name']}' from '{file_path}'."
+            )
+        try:
+            result = func_callable(**arguments)
+        except Exception as exc:
+            return (
+                f"Error executing '{func_record['name']}': "
+                f"{type(exc).__name__}: {exc}"
+            )
+        if isinstance(result, (dict, list)):
+            return json.dumps(result, indent=2, default=str)
+        return str(result)
+
+    # 3. Subprocess adapter
+    if exec_method == "subprocess":
+        from reverser.adapters.subprocess_adapter import SubprocessAdapter
+
+        return SubprocessAdapter().execute(func_record, arguments)
+
+    # 4. COM adapter
+    if exec_method == "com":
+        from reverser.adapters.com_adapter import COMAdapter
+
+        return COMAdapter().execute(func_record, arguments)
+
+    # 5. No execution path available
+    return (
+        f"Tool '{func_record.get('name')}' is defined in a {language} file "
+        "and has no execution adapter configured. "
+        "Run 'reverser generate-wrappers' to generate a Python wrapper for it."
+    )
+
+
 def run_mcp_server(db_path: str) -> None:
     """Start an MCP stdio server backed by the given database.
 
-    Exposes all action functions as MCP tools. Python functions are
-    executed by dynamic import; non-Python functions return an
-    informational message.
+    Exposes all action functions as MCP tools. Execution priority:
+    wrapper file → Python import → subprocess → COM → informational error.
 
     Args:
         db_path: Path to the SQLite database file.
@@ -182,48 +254,8 @@ def run_mcp_server(db_path: str) -> None:
         file_path = row["path"]
         language = row["language"]
 
-        if language != "Python":
-            return [
-                mcp_types.TextContent(
-                    type="text",
-                    text=(
-                        f"Tool '{name}' is defined in a {language} file. "
-                        "Execution is only supported for Python functions."
-                    ),
-                )
-            ]
-
-        func_callable = _load_python_function(
-            file_path, target["qualified_name"]
-        )
-        if func_callable is None:
-            return [
-                mcp_types.TextContent(
-                    type="text",
-                    text=(
-                        f"Error: could not load function "
-                        f"'{target['qualified_name']}' from '{file_path}'."
-                    ),
-                )
-            ]
-
-        try:
-            result = func_callable(**args)
-        except Exception as exc:
-            return [
-                mcp_types.TextContent(
-                    type="text",
-                    text=f"Error executing '{name}': {type(exc).__name__}: {exc}",
-                )
-            ]
-
-        # Serialize result to text
-        if isinstance(result, (dict, list)):
-            text = json.dumps(result, indent=2, default=str)
-        else:
-            text = str(result)
-
-        return [mcp_types.TextContent(type="text", text=text)]
+        output = _dispatch_execution(target, file_path, language, args)
+        return [mcp_types.TextContent(type="text", text=output)]
 
     import asyncio
 
