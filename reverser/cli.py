@@ -457,3 +457,165 @@ def generate_wrappers(
         f"[green]Generated[/green] {count} wrapper(s) in [dim]{wrappers_dir}/[/dim]"
     )
     db.close()
+
+
+@cli.command()
+@click.argument("target")
+@click.option(
+    "--db",
+    "db_path",
+    default="tools.db",
+    show_default=True,
+    help="Path to the SQLite database file.",
+)
+@click.option(
+    "--backend",
+    default="claude",
+    show_default=True,
+    type=click.Choice(["claude", "openai", "ollama"]),
+    help="LLM backend for AI-assisted description generation.",
+)
+@click.option(
+    "--ollama-host", default=None, help="Ollama server URL."
+)
+@click.option(
+    "--ollama-model", default=None, help="Ollama model name."
+)
+@click.option(
+    "--no-ai",
+    is_flag=True,
+    default=False,
+    help="Skip AI description generation (faster, no API key required).",
+)
+@click.option(
+    "--no-color", is_flag=True, default=False, help="Disable rich terminal colors."
+)
+def discover(
+    target: str,
+    db_path: str,
+    backend: str,
+    ollama_host: Optional[str],
+    ollama_model: Optional[str],
+    no_ai: bool,
+    no_color: bool,
+) -> None:
+    """Invasively discover all functions from an installed program.
+
+    TARGET can be any of:
+
+    \b
+    - A Python package name:     flopy
+    - A COM ProgID (Windows):    AutoCAD.Application
+    - A path to a binary/DLL:    /path/to/aermod.exe
+    - 'system' to scan all COM-registered programs (Windows)
+
+    Tries all applicable discovery strategies (Python introspection,
+    COM type library, binary export scan, running process inspection)
+    and stores everything in the database for later natural-language search.
+    The map is persistent — no re-scanning needed on subsequent runs.
+    """
+    from reverser.discovery import discover as run_discover
+
+    console = Console(no_color=no_color, highlight=False)
+    db = Database(db_path)
+
+    llm = None
+    if not no_ai:
+        try:
+            llm = _make_llm(backend, ollama_host, ollama_model)
+        except click.ClickException:
+            console.print("[yellow]Warning: LLM unavailable, skipping AI descriptions.[/yellow]")
+
+    console.print(f"\n[bold]Discovering[/bold] [cyan]{target}[/cyan]")
+    console.print(f"[dim]Database: {db_path}[/dim]\n")
+
+    with console.status(f"[bold cyan]Scanning {target}...[/bold cyan]"):
+        result = run_discover(target, db, llm)
+
+    console.print(
+        f"[green]Done.[/green] Found [bold]{result['functions']}[/bold] function(s) "
+        f"across [bold]{result['files']}[/bold] file(s) "
+        f"using [bold]{result['strategies_used']}[/bold] strategy/strategies."
+    )
+    render_stats(db.get_stats(), console)
+    db.close()
+
+
+@cli.command()
+@click.option(
+    "--db",
+    "db_path",
+    default="tools.db",
+    show_default=True,
+    help="Path to the SQLite database file.",
+)
+@click.option(
+    "--model",
+    default="claude-opus-4-5",
+    show_default=True,
+    help="Claude model ID for the orchestrator.",
+)
+@click.option(
+    "--no-color", is_flag=True, default=False, help="Disable rich terminal colors."
+)
+@click.argument("request", required=False, default=None)
+def chat(
+    db_path: str,
+    model: str,
+    no_color: bool,
+    request: Optional[str],
+) -> None:
+    """Natural language interface: type requests, get function calls executed.
+
+    With no REQUEST argument, starts an interactive REPL session.
+    With a REQUEST argument, executes it once and exits (for scripting).
+
+    \b
+    Examples:
+
+    \b
+    # Interactive session
+    reverser chat --db autocad.db
+
+    \b
+    # One-shot execution
+    reverser chat --db autocad.db "design a 20x20x20m box"
+    """
+    if not Path(db_path).exists():
+        raise click.ClickException(
+            f"Database '{db_path}' not found. "
+            "Run 'reverser discover' or 'reverser scan' first."
+        )
+
+    if request:
+        # One-shot mode
+        from reverser.db import Database as DB
+        from reverser.agents.orchestrator import Orchestrator
+        from rich.panel import Panel
+
+        console = Console(no_color=no_color, highlight=False)
+        db = DB(db_path)
+
+        try:
+            orch = Orchestrator(db, model=model)
+        except ValueError as exc:
+            raise click.ClickException(str(exc))
+
+        def on_step(step_type: str, content: str) -> None:
+            if step_type == "tool_call":
+                console.print(f"[cyan]🔧 {content.split('(')[0]}[/cyan]")
+            elif step_type == "tool_result":
+                console.print(f"[green]  ↳ {content[:150]}[/green]")
+
+        with console.status("[bold cyan]Processing...[/bold cyan]"):
+            result = orch.run(request, on_step=on_step)
+        console.print(Panel(result, border_style="green"))
+        db.close()
+    else:
+        # Interactive REPL mode
+        from reverser.repl import start_repl
+
+        try:
+            start_repl(db_path, model=model, no_color=no_color)
+        except ValueError as exc:
+            raise click.ClickException(str(exc))
