@@ -33,8 +33,11 @@ python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = "-v --tb=short"
 
+[project.scripts]
+code-reverser = "reverser.cli:cli"
+
 [tool.coverage.run]
-source = ["src", "utilities"]
+source = ["src", "utilities", "reverser"]
 omit = ["tests/*", "venv/*"]
 
 [tool.coverage.report]

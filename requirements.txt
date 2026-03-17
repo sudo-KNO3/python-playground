@@ -9,3 +9,11 @@ jupyter
 python-dotenv
 click
 rich
+
+# AI backends
+anthropic>=0.25.0
+openai>=1.0.0
+httpx>=0.27.0
+
+# MCP server
+mcp>=1.0.0
