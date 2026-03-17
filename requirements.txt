@@ -1,0 +1,11 @@
+# Core dependencies
+requests
+numpy
+pandas
+matplotlib
+jupyter
+
+# Utility libraries
+python-dotenv
+click
+rich

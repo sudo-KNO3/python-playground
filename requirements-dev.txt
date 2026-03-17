@@ -1,0 +1,12 @@
+# Development and testing tools
+pytest
+pytest-cov
+black
+flake8
+mypy
+isort
+pre-commit
+
+# Jupyter development
+ipykernel
+nbformat
