@@ -1,10 +1,16 @@
 """Two-phase classifier: heuristics + AI to identify action functions."""
 
 import json
+import logging
 from typing import Any, Dict, List, Optional
 
 from reverser.db import Database
 from reverser.llm import LLM
+
+logger = logging.getLogger(__name__)
+
+# Minimum confidence to mark a function as an action. Tuned empirically.
+MIN_ACTION_CONFIDENCE: float = 0.6
 
 CLASSIFY_PROMPT = """\
 Analyze the following Python function and decide whether it is a meaningful \
@@ -85,7 +91,7 @@ def _passes_heuristics(func: Dict[str, Any]) -> bool:
 def classify_functions(
     db: Database,
     llm: LLM,
-    confidence_threshold: float = 0.6,
+    confidence_threshold: float = MIN_ACTION_CONFIDENCE,
 ) -> int:
     """Classify all candidate functions in the database.
 
@@ -126,8 +132,19 @@ def classify_functions(
                 lines = text.split("\n")
                 text = "\n".join(lines[1:-1]) if len(lines) > 2 else text
             data = json.loads(text)
+        except json.JSONDecodeError:
+            logger.warning(
+                "Failed to parse LLM classification response for %r: %s",
+                func.get("qualified_name"),
+                response[:200] if "response" in dir() else "(no response)",
+            )
+            continue
         except Exception:
-            # If the LLM call or JSON parsing fails, skip this function
+            logger.warning(
+                "LLM call failed during classification of %r",
+                func.get("qualified_name"),
+                exc_info=True,
+            )
             continue
 
         is_action: bool = bool(data.get("is_action", False))

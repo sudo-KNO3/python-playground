@@ -1,12 +1,15 @@
 """Generates MCP-compatible tool schemas for action functions."""
 
 import json
+import logging
 import re
 from typing import Any, Dict, Optional
 
 from reverser.db import Database
 from reverser.llm import LLM
 from reverser.models import ToolSchema
+
+logger = logging.getLogger(__name__)
 
 SCHEMA_PROMPT = """\
 Generate an MCP (Model Context Protocol) tool schema for the following \
@@ -96,7 +99,19 @@ def generate_tool_schema(
             lines = text.split("\n")
             text = "\n".join(lines[1:-1]) if len(lines) > 2 else text
         data = json.loads(text)
+    except json.JSONDecodeError:
+        logger.warning(
+            "Failed to parse LLM schema response for %r: %s",
+            func.get("qualified_name"),
+            response[:200] if "response" in dir() else "(no response)",
+        )
+        return None
     except Exception:
+        logger.warning(
+            "LLM call failed during schema generation for %r",
+            func.get("qualified_name"),
+            exc_info=True,
+        )
         return None
 
     return ToolSchema(

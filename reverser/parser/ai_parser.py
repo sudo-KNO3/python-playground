@@ -1,11 +1,14 @@
 """AI-driven parser for non-Python source files."""
 
 import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List
 
 from reverser.llm import LLM
 from reverser.models import FileInfo, FunctionInfo, ImportEdge
+
+logger = logging.getLogger(__name__)
 
 PARSE_PROMPT = """\
 You are analyzing a {language} source file. Extract all function and method \
@@ -97,6 +100,7 @@ def parse_with_ai(path: Path, language: str, llm: LLM) -> FileInfo:
     try:
         response = llm.complete(prompt)
     except Exception:
+        logger.warning("LLM call failed while parsing %s", path, exc_info=True)
         return FileInfo(path=str(path), language=language)
 
     # Strip any markdown fences the LLM might add
@@ -109,6 +113,9 @@ def parse_with_ai(path: Path, language: str, llm: LLM) -> FileInfo:
     try:
         data = json.loads(text)
     except json.JSONDecodeError:
+        logger.warning(
+            "Failed to parse LLM response for %s: %s", path, response[:200]
+        )
         return FileInfo(path=str(path), language=language)
 
     functions = [

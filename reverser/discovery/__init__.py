@@ -1,9 +1,12 @@
 """Deep discovery engine: invasively maps programs on the host system."""
 
+import logging
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 from reverser.db import Database
+
+logger = logging.getLogger(__name__)
 
 
 def discover(
@@ -45,7 +48,7 @@ def discover(
             total_files += result["files"]
             strategies_used += 1
     except Exception:
-        pass
+        logger.warning("Python package discovery failed for %r", target, exc_info=True)
 
     # --- Strategy 2: COM type library ---
     try:
@@ -55,7 +58,7 @@ def discover(
             total_files += result["files"]
             strategies_used += 1
     except Exception:
-        pass
+        logger.warning("COM discovery failed for %r", target, exc_info=True)
 
     # --- Strategy 3: Binary/DLL export scan ---
     if Path(target).exists():
@@ -66,7 +69,7 @@ def discover(
                 total_files += result["files"]
                 strategies_used += 1
         except Exception:
-            pass
+            logger.warning("Binary discovery failed for %r", target, exc_info=True)
 
     # --- Strategy 4: Running process ---
     try:
@@ -76,7 +79,7 @@ def discover(
             total_files += result["files"]
             strategies_used += 1
     except Exception:
-        pass
+        logger.warning("Process discovery failed for %r", target, exc_info=True)
 
     return {
         "files": total_files,

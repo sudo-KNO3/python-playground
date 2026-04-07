@@ -1,12 +1,18 @@
 """Subprocess-based adapter for executing compiled CLI programs."""
 
 import json
+import logging
+import re
 import subprocess
-import shlex
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional, Tuple
 
 from reverser.adapters import BaseAdapter
+
+logger = logging.getLogger(__name__)
+
+# Allowlist for argument key names: letters, digits, hyphens, underscores only.
+_SAFE_KEY_RE = re.compile(r"^[a-zA-Z0-9_-]+$")
 
 
 class SubprocessAdapter(BaseAdapter):
@@ -69,7 +75,7 @@ class SubprocessAdapter(BaseAdapter):
         wrapper_path: str,
         func_record: Dict[str, Any],
         arguments: Dict[str, Any],
-    ) -> "tuple[List[str], str]":
+    ) -> Tuple[Optional[List[str]], str]:
         """Build the command list and optional stdin input.
 
         If wrapper_path is valid JSON, it is treated as a config dict:
@@ -105,6 +111,9 @@ class SubprocessAdapter(BaseAdapter):
                 cmd.append(str(value))
         else:  # flags (default)
             for key, value in arguments.items():
+                if not _SAFE_KEY_RE.match(str(key)):
+                    logger.warning("Skipping argument with unsafe key: %r", key)
+                    continue
                 cmd.append(f"--{key}={value}")
 
         return cmd, stdin_data

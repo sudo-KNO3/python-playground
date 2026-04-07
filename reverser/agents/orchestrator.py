@@ -257,20 +257,24 @@ class Orchestrator:
         """Run the executor sub-agent to call a specific function."""
         # Executor calls back into the orchestrator's call_tool handler
         # by parsing the task description for tool name + parameters
-        response = self.client.messages.create(
-            model=self.model,
-            max_tokens=1024,
-            system=EXECUTOR_SYSTEM,
-            messages=[
-                {
-                    "role": "user",
-                    "content": (
-                        f"Execute this task: {task}\n\nContext:\n{context}\n\n"
-                        "Identify the tool name and parameters, then describe the call."
-                    ),
-                }
-            ],
-        )
+        try:
+            response = self.client.messages.create(
+                model=self.model,
+                max_tokens=1024,
+                system=EXECUTOR_SYSTEM,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": (
+                            f"Execute this task: {task}\n\nContext:\n{context}\n\n"
+                            "Identify the tool name and parameters, then describe the call."
+                        ),
+                    }
+                ],
+            )
+        except Exception as exc:
+            return json.dumps({"error": f"Executor LLM call failed: {exc}"})
+
         text = ""
         for block in response.content:
             if hasattr(block, "text"):

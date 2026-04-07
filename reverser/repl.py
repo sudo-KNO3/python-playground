@@ -2,7 +2,7 @@
 
 import sys
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional
 
 from rich.console import Console
 from rich.markdown import Markdown
@@ -67,7 +67,7 @@ class REPL:
         self.console = Console(no_color=no_color, highlight=False)
         self.db = Database(db_path)
         self.orchestrator = Orchestrator(self.db, model=model)
-        self.history: list = []
+        self.history: List[str] = []
 
     def _print_banner(self) -> None:
         stats = self.db.get_stats()
