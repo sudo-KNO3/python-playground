@@ -1,6 +1,6 @@
 ---
 name: validate-pipeline
-description: Validate AERMOD Pipeline V4 inputs and outputs. Checks runstream files, met data, receptor grids, and output files for correctness before and after a model run. Pass a directory or file path as the argument.
+description: Validate AERMOD Pipeline V5 inputs and outputs. Checks runstream files, met data, receptor grids, and output files for correctness before and after a model run. Pass a directory or file path as the argument.
 allowed-tools:
   - Read
   - Glob

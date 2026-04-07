@@ -1,6 +1,6 @@
 ---
 name: pr-review
-description: Review a pull request for the AERMOD Pipeline V4. Checks correctness, simplicity, test coverage, and AERMOD-specific gotchas. Pass a PR number or branch name as the argument.
+description: Review a pull request for the AERMOD Pipeline V5. Checks correctness, simplicity, test coverage, and AERMOD-specific gotchas. Pass a PR number or branch name as the argument.
 allowed-tools:
   - Bash
   - Read

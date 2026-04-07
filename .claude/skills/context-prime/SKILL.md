@@ -1,6 +1,6 @@
 ---
 name: context-prime
-description: Load full AERMOD Pipeline V4 project context before starting work. Run this at the start of every session to avoid re-explaining architecture and save tokens.
+description: Load full AERMOD Pipeline V5 project context before starting work. Run this at the start of every session to avoid re-explaining architecture and save tokens.
 allowed-tools:
   - Read
   - Glob
@@ -8,7 +8,7 @@ allowed-tools:
   - Bash
 ---
 
-You are being asked to load full context for the AERMOD Pipeline V4 project before beginning any work. Do this thoroughly and silently — do not narrate each file read, just load everything and report a concise summary at the end.
+You are being asked to load full context for the AERMOD Pipeline V5 project before beginning any work. Do this thoroughly and silently — do not narrate each file read, just load everything and report a concise summary at the end.
 
 ## Steps
 

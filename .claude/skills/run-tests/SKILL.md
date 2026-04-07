@@ -1,13 +1,13 @@
 ---
 name: run-tests
-description: Run the AERMOD Pipeline V4 test suite with coverage reporting. Diagnoses failures and suggests targeted fixes. Optionally pass a path or keyword to run a subset (e.g. "parser", "tests/test_validator.py").
+description: Run the AERMOD Pipeline V5 test suite with coverage reporting. Diagnoses failures and suggests targeted fixes. Optionally pass a path or keyword to run a subset (e.g. "parser", "tests/test_validator.py").
 allowed-tools:
   - Bash
   - Read
   - Grep
 ---
 
-Run the test suite for the AERMOD Pipeline V4. If `$ARGUMENTS` is provided, run only tests matching that path or keyword.
+Run the test suite for the AERMOD Pipeline V5. If `$ARGUMENTS` is provided, run only tests matching that path or keyword.
 
 ## Steps
 
