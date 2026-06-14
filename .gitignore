@@ -1,0 +1,17 @@
+# OS / editor junk
+.DS_Store
+*.swp
+*~
+
+# Rust build outputs (committed pkg/ at root is the deployable artifact;
+# the rust-tacobell/pkg/ intermediate one is fine to ignore)
+rust-tacobell/target/
+rust-tacobell/pkg/
+rust-tacobell/Cargo.lock
+
+# Overpass snapshot — regenerate via rust-tacobell/refresh-data.sh
+rust-tacobell/data/na-taco-bells.json
+
+# wasm-pack regenerates pkg/.gitignore on every build; we delete it so
+# the deployable WASM stays committed.
+pkg/.gitignore

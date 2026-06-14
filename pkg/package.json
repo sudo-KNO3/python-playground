@@ -1,0 +1,16 @@
+{
+  "name": "tacobell-finder",
+  "type": "module",
+  "description": "Pre-baked nearest-Taco-Bell finder, compiled to WebAssembly.",
+  "version": "0.1.0",
+  "files": [
+    "tacobell_finder_bg.wasm",
+    "tacobell_finder.js",
+    "tacobell_finder.d.ts"
+  ],
+  "main": "tacobell_finder.js",
+  "types": "tacobell_finder.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

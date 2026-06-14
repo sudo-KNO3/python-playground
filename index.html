@@ -3,19 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#ff6fa3">
-<title>hi 💖</title>
+<meta name="theme-color" content="#702082">
+<title>where's my taco bell 🌮</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- preload the Rust→WASM finder so it's ready by the time the user taps the button -->
+<link rel="modulepreload" href="./pkg/tacobell_finder.js">
+<link rel="preload" href="./pkg/tacobell_finder_bg.wasm" as="fetch" type="application/wasm" crossorigin>
 <style>
   /* ---------- foundation ---------- */
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { height: 100%; overflow: hidden; }
+  html, body { height: 100%; }
   body {
     font-family: "Fredoka", "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif;
-    color: #2d1b3a;
-    background: linear-gradient(135deg, #ffd6e8 0%, #ffe5c9 35%, #fff7a8 60%, #c9f0ff 100%);
+    color: #fff;
+    background: linear-gradient(160deg, #2a0040 0%, #702082 35%, #c5407a 65%, #ff6b35 100%);
     background-attachment: fixed;
     min-height: 100dvh;
     display: flex;
@@ -23,82 +26,97 @@
     justify-content: center;
     padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
     overflow: hidden;
+    position: relative;
   }
 
-  /* slow drifting blob backdrop for ambient chaos */
+  /* drifting neon blobs */
   body::before, body::after {
     content: "";
     position: fixed;
     border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.55;
+    filter: blur(80px);
+    opacity: 0.45;
     pointer-events: none;
     z-index: 0;
   }
   body::before {
-    width: 60vw; height: 60vw;
-    background: #ff85b3;
-    top: -20vw; left: -20vw;
-    animation: drift1 18s ease-in-out infinite alternate;
+    width: 70vw; height: 70vw;
+    background: #ff2d8a;
+    top: -25vw; left: -25vw;
+    animation: drift1 20s ease-in-out infinite alternate;
   }
   body::after {
-    width: 55vw; height: 55vw;
-    background: #87dafe;
-    bottom: -20vw; right: -20vw;
-    animation: drift2 22s ease-in-out infinite alternate;
+    width: 65vw; height: 65vw;
+    background: #ffd23f;
+    bottom: -25vw; right: -25vw;
+    animation: drift2 26s ease-in-out infinite alternate;
   }
   @keyframes drift1 {
     from { transform: translate(0, 0) scale(1); }
-    to   { transform: translate(8vw, 6vw) scale(1.12); }
+    to   { transform: translate(10vw, 8vw) scale(1.15); }
   }
   @keyframes drift2 {
     from { transform: translate(0, 0) scale(1); }
-    to   { transform: translate(-6vw, -8vw) scale(1.15); }
+    to   { transform: translate(-8vw, -10vw) scale(1.2); }
   }
 
   /* ---------- card ---------- */
   .card {
     position: relative;
     z-index: 1;
-    width: min(92vw, 460px);
-    max-height: 92dvh;
+    width: min(94vw, 480px);
+    max-height: 96dvh;
     overflow-y: auto;
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(18, 0, 30, 0.62);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
     border-radius: 32px;
-    padding: 32px 26px;
+    padding: 32px 24px 28px;
     box-shadow:
-      0 24px 70px rgba(255, 120, 170, 0.28),
-      0 4px 12px rgba(0, 0, 0, 0.06),
-      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      0 30px 80px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     text-align: center;
   }
 
   /* ---------- type ---------- */
   h1 {
-    font-size: clamp(2rem, 8vw, 2.6rem);
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
     font-weight: 700;
-    line-height: 1.15;
-    margin-bottom: 6px;
+    line-height: 1.1;
     letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
   }
-  .sub {
-    font-size: 1.05rem;
+  .tagline {
+    font-size: 1rem;
     font-weight: 400;
-    opacity: 0.78;
-    margin-bottom: 28px;
+    opacity: 0.82;
+    margin-bottom: 24px;
   }
   .result-title {
-    font-size: clamp(1.4rem, 5.5vw, 1.7rem);
-    font-weight: 500;
-    line-height: 1.35;
-    margin: 18px 0 8px;
+    font-size: clamp(1.25rem, 5vw, 1.55rem);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 14px 0 4px;
   }
   .result-meta {
     font-size: 0.95rem;
-    opacity: 0.65;
-    margin-bottom: 24px;
+    opacity: 0.75;
+    margin-bottom: 16px;
+  }
+
+  /* ---------- big emoji ---------- */
+  .big-emoji {
+    font-size: clamp(5rem, 22vw, 7rem);
+    display: block;
+    margin: 4px 0 4px;
+    filter: drop-shadow(0 4px 16px rgba(255, 211, 63, 0.4));
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50%      { transform: translateY(-8px) rotate(3deg); }
   }
 
   /* ---------- buttons ---------- */
@@ -106,69 +124,121 @@
     display: block;
     width: 100%;
     padding: 18px 20px;
-    margin: 12px 0;
+    margin: 10px 0;
     font-family: inherit;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: white;
-    background: linear-gradient(135deg, #ff6fa3, #ff8559);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, #ff2d8a 0%, #ff6b35 60%, #ffd23f 100%);
     border: none;
     border-radius: 22px;
     cursor: pointer;
     transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.2s ease;
-    box-shadow: 0 8px 20px rgba(255, 100, 140, 0.4);
+    box-shadow: 0 10px 24px rgba(255, 45, 138, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    text-decoration: none;
+    text-align: center;
     -webkit-user-select: none;
     user-select: none;
   }
-  .btn:active { transform: translateY(2px) scale(0.97); box-shadow: 0 4px 10px rgba(255, 100, 140, 0.4); }
+  .btn:active { transform: translateY(2px) scale(0.97); box-shadow: 0 5px 12px rgba(255, 45, 138, 0.45); }
   .btn:hover { filter: brightness(1.05); }
-  .btn.taco { background: linear-gradient(135deg, #b06bff, #ff6fa3); box-shadow: 0 8px 20px rgba(176, 107, 255, 0.4); }
   .btn.ghost {
     background: transparent;
-    color: #2d1b3a;
+    color: rgba(255, 255, 255, 0.85);
     box-shadow: none;
-    border: 2px solid rgba(45, 27, 58, 0.18);
-    font-weight: 400;
+    border: 1.5px solid rgba(255, 255, 255, 0.25);
+    font-weight: 500;
   }
   .btn.ghost:active { transform: translateY(1px) scale(0.98); }
-  .btn-row { display: flex; gap: 10px; }
-  .btn-row .btn { margin: 0; }
-
-  /* ---------- emoji vibes ---------- */
-  .big-emoji {
-    font-size: clamp(4rem, 18vw, 6rem);
-    display: block;
-    margin: 4px 0 6px;
-    animation: wiggle 2.4s ease-in-out infinite;
-    transform-origin: 50% 80%;
+  .btn-big {
+    font-size: 1.2rem;
+    padding: 22px 20px;
+    margin-top: 16px;
   }
-  @keyframes wiggle {
-    0%, 100% { transform: rotate(-6deg); }
-    50%      { transform: rotate(6deg); }
+
+  /* ---------- result list ---------- */
+  .nearest-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    padding: 16px 16px 14px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .nearest-card.gold {
+    background: linear-gradient(135deg, rgba(255, 211, 63, 0.18), rgba(255, 107, 53, 0.18));
+    border: 1px solid rgba(255, 211, 63, 0.45);
+  }
+  .nearest-dist {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 4px;
+    color: #ffd23f;
+  }
+  .nearest-name {
+    font-size: 0.98rem;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+  .nearest-status {
+    font-size: 0.82rem;
+    opacity: 0.7;
+    margin-bottom: 12px;
+  }
+  .nearest-status.open  { color: #6dffb8; opacity: 0.95; }
+  .nearest-status.closed{ color: #ff8b8b; opacity: 0.9; }
+  .alt-list {
+    margin: 0 0 16px;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+  }
+  .alt-list li {
+    font-size: 0.92rem;
+    opacity: 0.78;
+    padding: 8px 0;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  }
+  .alt-list li:first-child { border-top: none; }
+  .alt-list b { font-weight: 600; color: #ffd23f; }
+
+  /* ---------- recommendation chip ---------- */
+  .rec {
+    margin: 18px 0 6px;
+    padding: 14px 16px;
+    background: rgba(255, 211, 63, 0.14);
+    border: 1px dashed rgba(255, 211, 63, 0.5);
+    border-radius: 16px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .rec b { color: #ffd23f; }
+  .rec-label {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 4px;
+  }
+
+  /* ---------- footer ---------- */
+  .footer {
+    margin-top: 22px;
+    font-size: 0.78rem;
+    opacity: 0.55;
+    line-height: 1.4;
   }
 
   /* ---------- screens ---------- */
   .screen { display: none; }
   .screen.active { display: block; animation: pop 0.35s cubic-bezier(.2, .9, .3, 1.3); }
   @keyframes pop {
-    from { transform: scale(0.92); opacity: 0; }
+    from { transform: scale(0.94); opacity: 0; }
     to   { transform: scale(1);    opacity: 1; }
   }
-
-  /* ---------- result card ---------- */
-  .result-emoji {
-    font-size: clamp(3.5rem, 14vw, 5rem);
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  /* ---------- footer ---------- */
-  .footer {
-    margin-top: 24px;
-    font-size: 0.85rem;
-    opacity: 0.55;
-  }
-  .footer span { font-weight: 500; }
 
   /* ---------- confetti ---------- */
   .confetti-wrap {
@@ -182,112 +252,114 @@
   @keyframes fall {
     to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
   }
+
+  /* ---------- loading spinner ---------- */
+  .spinner {
+    display: inline-block;
+    width: 44px; height: 44px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #ffd23f;
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+    margin: 12px 0 4px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 </head>
 <body>
   <div class="confetti-wrap" id="confettiWrap" aria-hidden="true"></div>
 
   <main class="card" id="card">
-    <!-- HOME -->
+    <!-- HOME — landing screen. Tap the button to grant location permission and search. -->
     <section class="screen active" id="screenHome" aria-label="home">
-      <span class="big-emoji">💖</span>
-      <h1>hi, you</h1>
-      <p class="sub">i made you a little thing.<br>pick one.</p>
-      <button class="btn"      onclick="rollDate()">surprise me 💘</button>
-      <button class="btn taco" onclick="findTacoBell()">find me taco bell 🌮</button>
-      <p class="footer">made with too much love &amp; bad ideas <span>·</span> by yours truly</p>
+      <span class="big-emoji">🌮</span>
+      <h1>where's my taco bell</h1>
+      <p class="tagline">tap. allow location. devour.</p>
+      <button class="btn btn-big" onclick="findTacoBell()">find me a taco bell 🌮</button>
+      <p class="footer">made with too much creativity &amp; one of those&nbsp;crunchwraps</p>
     </section>
 
-    <!-- DATE RESULT -->
-    <section class="screen" id="screenDate" aria-label="date suggestion">
-      <span class="result-emoji" id="dateEmoji">✨</span>
-      <p class="sub">your assignment, should you choose to accept it:</p>
-      <p class="result-title" id="dateText">…</p>
-      <p class="result-meta" id="dateMeta">tap below to roll again or chicken out</p>
-      <button class="btn" onclick="rollDate()">again, please 🎲</button>
-      <button class="btn ghost" onclick="goHome()">back</button>
+    <!-- LOADING — shown after the user taps the button -->
+    <section class="screen" id="screenLoading" aria-label="searching">
+      <span class="big-emoji" id="loadEmoji">📡</span>
+      <p class="result-title" id="loadTitle">asking your phone where you are…</p>
+      <p class="result-meta" id="loadMeta">(say yes to the location prompt 🥺)</p>
+      <div class="spinner"></div>
     </section>
 
-    <!-- TACO BELL RESULT -->
-    <section class="screen" id="screenTaco" aria-label="taco bell finder">
-      <span class="result-emoji" id="tacoEmoji">🌮</span>
-      <p class="result-title" id="tacoTitle">finding your nearest taco bell…</p>
-      <p class="result-meta" id="tacoMeta"></p>
-      <div id="tacoActions"></div>
-      <button class="btn ghost" onclick="goHome()" style="margin-top: 12px;">back</button>
+    <!-- RESULTS -->
+    <section class="screen" id="screenResults" aria-label="nearest taco bells">
+      <span class="big-emoji" style="font-size: clamp(3.5rem, 14vw, 5rem);">🌮</span>
+      <h1>found it.</h1>
+
+      <div class="nearest-card gold" id="nearestCard">
+        <div class="nearest-dist" id="nearestDist">…</div>
+        <div class="nearest-name" id="nearestName"></div>
+        <div class="nearest-status" id="nearestStatus"></div>
+        <a class="btn" id="primaryMapBtn" target="_blank" rel="noopener">open in maps 🗺️</a>
+      </div>
+
+      <ul class="alt-list" id="altList"></ul>
+
+      <div class="rec">
+        <span class="rec-label">order this</span>
+        <span id="recText">…</span>
+      </div>
+
+      <p class="footer" id="funFact">🌶️ fun fact loading…</p>
+
+      <button class="btn ghost" onclick="findTacoBell()" style="margin-top: 12px;">refresh 🔁</button>
+      <button class="btn ghost" onclick="goHome()" style="margin-top: 8px;">back</button>
+    </section>
+
+    <!-- ERROR -->
+    <section class="screen" id="screenError" aria-label="error">
+      <span class="big-emoji">🙃</span>
+      <h1 id="errTitle">hmm</h1>
+      <p class="result-meta" id="errBody"></p>
+      <button class="btn" onclick="findTacoBell()">try again 🔁</button>
+      <button class="btn ghost" onclick="goHome()" style="margin-top: 8px;">back</button>
     </section>
   </main>
 
+<script type="module">
+// 🦀 Load the Rust→WASM finder. Kicks off as soon as the document parses;
+// the WASM is preloaded (see <link rel="preload"> in <head>) so this is
+// effectively cached by the time the user taps the button.
+import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js";
+
+window.wasmReady = init().then(() => {
+  window.find_nearest_three = find_nearest_three;
+  window.tacoBellDatasetSize = dataset_size();
+  console.log(`🦀 powered by Rust — ${window.tacoBellDatasetSize} Taco Bells baked in`);
+});
+</script>
+
 <script>
-/* ---------- date ideas (weighted by time of day) ---------- */
-/* slots: m=morning (5-11), a=afternoon (12-17), e=evening (18-22), l=late (23-4); "any" = always eligible */
-const DATE_IDEAS = [
-  // any-time
-  { text: "split a single milkshake at a diner",                                              emoji: "🥤", slots: ["a", "e", "l"] },
-  { text: "trade phones for an hour and pick songs for each other",                           emoji: "🎵", slots: ["any"]        },
-  { text: "go to a thrift store and buy each other the dumbest thing under $10",              emoji: "👕", slots: ["a"]          },
-  { text: "pillow fort + the worst movie you can find + bad snacks",                          emoji: "🛋️", slots: ["e", "l"]     },
-  { text: "find the longest wikipedia rabbit hole — winner picks dinner",                     emoji: "🐇", slots: ["any"]        },
-  { text: "read each other tarot cards even though neither of you believe in it",             emoji: "🔮", slots: ["e", "l"]     },
-  { text: "co-write a one-page short story, one sentence each, no editing",                   emoji: "✍️", slots: ["any"]        },
-  { text: "face mask + cucumber slices + chaotic spa playlist",                               emoji: "🧖", slots: ["e"]          },
-  { text: "mario kart, loser does dishes for a week",                                         emoji: "🏁", slots: ["any"]        },
-  { text: "make a playlist of songs that remind you of each other. no skips.",                emoji: "💿", slots: ["any"]        },
-  { text: "20 questions about each other. you have to learn ONE actually new thing.",         emoji: "❓", slots: ["any"]        },
-  { text: "show each other the weirdest pics in your camera roll. no judgement.",             emoji: "📷", slots: ["any"]        },
-  { text: "facetime your parents together. yes really.",                                      emoji: "📞", slots: ["a", "e"]     },
-  { text: "go on a snack run with no plan and come back with at least one bizarre item",      emoji: "🍿", slots: ["e", "l"]     },
-
-  // morning-ish
-  { text: "pancakes from scratch — read the recipe wrong on purpose",                         emoji: "🥞", slots: ["m"]          },
-  { text: "drive somewhere with no destination, turn around when the song ends",              emoji: "🚗", slots: ["m", "a"]     },
-  { text: "world's longest hug. start a timer.",                                              emoji: "🫂", slots: ["m", "any"]   },
-  { text: "go to a coffee shop neither of you have ever been to",                             emoji: "☕", slots: ["m", "a"]     },
-  { text: "read each other your horoscopes in the most dramatic voice possible",              emoji: "🌟", slots: ["m"]          },
-
-  // afternoon
-  { text: "museum trip — make up the plot of every painting out loud",                        emoji: "🖼️", slots: ["a"]          },
-  { text: "go for a walk and try to spot five genuinely weird things",                        emoji: "🚶", slots: ["a"]          },
-  { text: "bookstore date: buy each other a book based on the cover only",                    emoji: "📚", slots: ["a"]          },
-  { text: "rent a kayak / paddleboat / something that floats",                                emoji: "🚣", slots: ["a"]          },
-  { text: "botanical garden or random park, find one plant nobody has ever heard of",         emoji: "🌿", slots: ["a"]          },
-
-  // evening
-  { text: "cook something neither of you has made before. no recipes allowed.",               emoji: "🍳", slots: ["e"]          },
-  { text: "go to a bar and order each other's drinks",                                        emoji: "🍸", slots: ["e", "l"]     },
-  { text: "stargazing — roof, parking lot, or drive out somewhere darker",                    emoji: "🌌", slots: ["e", "l"]     },
-  { text: "fancy outfits, mcdonalds drive-thru",                                              emoji: "🍔", slots: ["e", "l"]     },
-  { text: "karaoke. there is no opting out.",                                                 emoji: "🎤", slots: ["e", "l"]     },
-  { text: "dance to exactly one song in the kitchen",                                         emoji: "💃", slots: ["e"]          },
-  { text: "candlelit dinner from whatever's already in the fridge",                           emoji: "🕯️", slots: ["e"]          },
-
-  // late-night
-  { text: "taco bell drive-thru at 1am. yes. you knew this was coming.",                      emoji: "🌮", slots: ["l"]          },
-  { text: "24-hour diner. order pancakes. tip the server well.",                              emoji: "🍳", slots: ["l"]          },
-  { text: "stay up to watch the sunrise together. yes you have to. yes it counts.",           emoji: "🌅", slots: ["l"]          },
-  { text: "blanket fort + scary podcast + holding each other a little too tight",             emoji: "🎙️", slots: ["l"]          },
+/* ---------- menu picks (silly + real) ---------- */
+const MENU_PICKS = [
+  { item: "Crunchwrap Supreme",        nudge: "this is the universally correct answer."        },
+  { item: "Cheesy Gordita Crunch",     nudge: "structural integrity meets cheese. iconic."     },
+  { item: "Doritos Locos Tacos (3-pk)",nudge: "you knew you wanted these."                     },
+  { item: "Quesarito",                 nudge: "a burrito inside a quesadilla. who hurt them."  },
+  { item: "Mexican Pizza",             nudge: "they brought it back. honor that."              },
+  { item: "5-Layer Burrito",           nudge: "low-stakes. high-comfort. always right."        },
+  { item: "Chalupa Supreme",           nudge: "fried shell energy. you've earned it."          },
+  { item: "Cinnamon Twists",           nudge: "you came for dessert too. obviously."           },
+  { item: "Nacho Fries",               nudge: "if they're on the menu, you order them. period."},
+  { item: "Beefy Melt Burrito",        nudge: "value menu sleeper hit. trust."                 },
 ];
 
-function currentSlot() {
-  const h = new Date().getHours();
-  if (h >= 5  && h < 12) return "m";
-  if (h >= 12 && h < 18) return "a";
-  if (h >= 18 && h < 23) return "e";
-  return "l";
-}
-
-function pickDateIdea() {
-  const slot = currentSlot();
-  const buckets = [];
-  for (const idea of DATE_IDEAS) {
-    // weight: in-slot picks weighted 3x, "any" picks 2x, off-slot 1x
-    let w = 1;
-    if (idea.slots.includes(slot)) w = 3;
-    else if (idea.slots.includes("any")) w = 2;
-    for (let i = 0; i < w; i++) buckets.push(idea);
-  }
-  return buckets[Math.floor(Math.random() * buckets.length)];
-}
+const FUN_FACTS = [
+  "🌶️ taco bell sells over <b>2 billion</b> tacos a year",
+  "🛸 the original taco bell was opened in 1962 in downey, california",
+  "🔔 the bell in the logo? it's actually a real mission bell in glen bell's hometown",
+  "🌌 there's a taco bell in space program. it's not a joke. it's called the cantina express",
+  "🌮 the doritos locos taco is widely considered the best fast food invention of the 2010s",
+  "🥑 the mild sauce packet is statistically the most popular. you should disagree on principle.",
+  "🍕 the mexican pizza was discontinued in 2020 and the internet rioted. it came back in 2022.",
+  "🧀 there are over <b>7,000</b> taco bells worldwide",
+];
 
 /* ---------- screens ---------- */
 function show(id) {
@@ -296,121 +368,204 @@ function show(id) {
 }
 function goHome() { show("screenHome"); }
 
-/* ---------- date roll ---------- */
-let lastDateIdx = -1;
-function rollDate() {
-  let idea;
-  // avoid repeating the exact same idea twice in a row
-  for (let tries = 0; tries < 6; tries++) {
-    idea = pickDateIdea();
-    if (idea.text !== document.getElementById("dateText").textContent) break;
-  }
-  document.getElementById("dateEmoji").textContent = idea.emoji;
-  document.getElementById("dateText").textContent = idea.text;
-  show("screenDate");
-  burstConfetti();
-}
-
-/* ---------- taco bell finder ---------- */
+/* ---------- main flow ---------- */
 function findTacoBell() {
-  show("screenTaco");
-  document.getElementById("tacoEmoji").textContent = "📡";
-  document.getElementById("tacoTitle").textContent = "asking your phone where you are…";
-  document.getElementById("tacoMeta").textContent = "(say yes to the location prompt 🥺)";
-  document.getElementById("tacoActions").innerHTML = "";
+  show("screenLoading");
+  document.getElementById("loadEmoji").textContent = "📡";
+  document.getElementById("loadTitle").textContent = "asking your phone where you are…";
+  document.getElementById("loadMeta").textContent = "(say yes to the location prompt 🥺)";
 
   if (!navigator.geolocation) {
-    return tacoFail("your browser doesn't do location.<br>i'm shocked, honestly.");
+    return showError("hmm", "your browser doesn't do location. that's a problem.");
   }
 
   navigator.geolocation.getCurrentPosition(
     (pos) => queryTacoBells(pos.coords.latitude, pos.coords.longitude),
     (err) => {
       const msg = err.code === err.PERMISSION_DENIED
-        ? "ok ouch. you denied the location prompt.<br>no tacos for the suspicious. 🙄"
-        : "couldn't figure out where you are.<br>are you in a faraday cage??";
-      tacoFail(msg);
+        ? "you denied the location prompt. no tacos for the suspicious. 🙄"
+        : "couldn't figure out where you are. are you underground??";
+      showError("ouch", msg);
     },
     { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 }
   );
 }
 
 async function queryTacoBells(lat, lon) {
-  document.getElementById("tacoEmoji").textContent = "🔍";
-  document.getElementById("tacoTitle").textContent = "scanning the cosmos for tacos…";
-  document.getElementById("tacoMeta").textContent = "";
+  // The WASM call is microseconds; the human-perceptible "loading" period
+  // is just the geolocation prompt + maybe waiting for the WASM module to
+  // finish its first-paint init (~50ms cold, instant warm).
+  document.getElementById("loadEmoji").textContent = "🦀";
+  document.getElementById("loadTitle").textContent = "rust is finding them…";
+  document.getElementById("loadMeta").textContent = "";
 
-  // Overpass QL: any node tagged Taco Bell within 25km
-  const radius = 25000;
-  const q = `
-    [out:json][timeout:15];
-    (
-      node["amenity"="fast_food"]["name"~"^Taco Bell",i](around:${radius},${lat},${lon});
-      node["amenity"="fast_food"]["brand"~"^Taco Bell",i](around:${radius},${lat},${lon});
-    );
-    out tags center;
-  `;
   try {
-    const resp = await fetch("https://overpass-api.de/api/interpreter", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: "data=" + encodeURIComponent(q),
-    });
-    if (!resp.ok) throw new Error("overpass " + resp.status);
-    const data = await resp.json();
-    const nodes = (data.elements || []).filter(e => e.lat && e.lon);
-    if (nodes.length === 0) {
-      return tacoFail(
-        "no taco bell within 25km.<br>" +
-        "cosmic sign to make quesadillas at home? 🫶"
-      );
-    }
-    // pick the closest
-    nodes.forEach(n => { n._d = haversineKm(lat, lon, n.lat, n.lon); });
-    nodes.sort((a, b) => a._d - b._d);
-    const closest = nodes[0];
-    renderTaco(closest, lat, lon);
+    await window.wasmReady;
   } catch (e) {
-    tacoFail("the internet ate your taco bell.<br>try again in a sec.");
+    return showError(
+      "oof",
+      "the rust module didn't load. refresh maybe? 🦀💥"
+    );
   }
+
+  const top3 = window.find_nearest_three(lat, lon);
+  if (!top3 || top3.length === 0) {
+    return showError(
+      "huh.",
+      "the dataset is empty somehow. that should never happen."
+    );
+  }
+
+  // Shape the WASM output to the node shape that `renderResults`,
+  // `formatAddress`, and `checkOpenStatus` already expect. The Rust
+  // side pre-composed the address into a single string, so we put it
+  // into `addr:street` (formatAddress falls back to that when
+  // `addr:housenumber` is absent).
+  const nodes = top3.map(h => ({
+    lat: h.lat,
+    lon: h.lon,
+    _d: h.dist_km,
+    tags: {
+      name: h.name,
+      "addr:street": h.addr || "",
+      ...(h.opening_hours ? { opening_hours: h.opening_hours } : {}),
+    },
+  }));
+  renderResults(nodes);
 }
 
-function renderTaco(node, fromLat, fromLon) {
-  const d = node._d;
-  const distLabel = d < 1
-    ? `${Math.round(d * 1000)} m away`
-    : `${d.toFixed(1)} km away`;
+function renderResults(nodes) {
+  const closest = nodes[0];
+  const distLabel = closest._d < 1
+    ? `${Math.round(closest._d * 1000)} m away`
+    : `${closest._d.toFixed(1)} km away`;
 
-  const dLat = node.lat;
-  const dLon = node.lon;
-  const mapsHref = `https://www.google.com/maps/dir/?api=1&destination=${dLat},${dLon}&travelmode=driving`;
-  const appleHref = `http://maps.apple.com/?daddr=${dLat},${dLon}`;
+  document.getElementById("nearestDist").textContent = distLabel;
+  document.getElementById("nearestName").textContent = formatAddress(closest) || "Taco Bell";
 
-  document.getElementById("tacoEmoji").textContent = "🌮";
-  document.getElementById("tacoTitle").innerHTML =
-    `your nearest taco bell is <b>${distLabel}</b>`;
-  document.getElementById("tacoMeta").innerHTML =
-    (node.tags && node.tags["addr:street"])
-      ? `${node.tags["addr:housenumber"] || ""} ${node.tags["addr:street"]}`
-      : "address unknown — let your phone navigate";
+  const openInfo = checkOpenStatus(closest);
+  const statusEl = document.getElementById("nearestStatus");
+  statusEl.className = "nearest-status " + (openInfo.cls || "");
+  statusEl.innerHTML = openInfo.text;
 
   const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
-  const primary = isApple ? appleHref : mapsHref;
-  const primaryLabel = isApple ? "open in maps 🗺️" : "open in google maps 🗺️";
+  const dLat = closest.lat, dLon = closest.lon;
+  const href = isApple
+    ? `http://maps.apple.com/?daddr=${dLat},${dLon}`
+    : `https://www.google.com/maps/dir/?api=1&destination=${dLat},${dLon}&travelmode=driving`;
+  document.getElementById("primaryMapBtn").href = href;
+  document.getElementById("primaryMapBtn").textContent = isApple ? "open in maps 🗺️" : "open in google maps 🗺️";
 
-  document.getElementById("tacoActions").innerHTML = `
-    <a class="btn taco" href="${primary}" target="_blank" rel="noopener">${primaryLabel}</a>
-    <button class="btn" onclick="findTacoBell()">find another one 🔁</button>
-  `;
+  // alt list
+  const alts = nodes.slice(1);
+  const altUl = document.getElementById("altList");
+  if (alts.length === 0) {
+    altUl.innerHTML = "";
+  } else {
+    altUl.innerHTML = '<li style="opacity:0.55; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; border-top:none; padding-bottom:2px;">other nearby</li>'
+      + alts.map(n => {
+        const d = n._d < 1 ? `${Math.round(n._d * 1000)} m` : `${n._d.toFixed(1)} km`;
+        return `<li><b>${d}</b> · ${formatAddress(n) || "Taco Bell"}</li>`;
+      }).join("");
+  }
+
+  // menu pick
+  const pick = MENU_PICKS[Math.floor(Math.random() * MENU_PICKS.length)];
+  document.getElementById("recText").innerHTML =
+    `<b>${pick.item}</b>. ${pick.nudge}`;
+
+  // fun fact
+  document.getElementById("funFact").innerHTML =
+    FUN_FACTS[Math.floor(Math.random() * FUN_FACTS.length)];
+
+  show("screenResults");
   burstConfetti();
 }
 
-function tacoFail(htmlMsg) {
-  document.getElementById("tacoEmoji").textContent = "🙃";
-  document.getElementById("tacoTitle").innerHTML = htmlMsg;
-  document.getElementById("tacoMeta").textContent = "";
-  document.getElementById("tacoActions").innerHTML =
-    `<button class="btn" onclick="findTacoBell()">try again 🔁</button>`;
+function formatAddress(node) {
+  const t = node.tags || {};
+  const num = t["addr:housenumber"];
+  const street = t["addr:street"];
+  const city = t["addr:city"];
+  if (num && street) return `${num} ${street}${city ? ", " + city : ""}`;
+  if (street) return `${street}${city ? ", " + city : ""}`;
+  if (t.name) return t.name;
+  return "Taco Bell";
+}
+
+/**
+ * Best-effort open/closed status from OSM `opening_hours` tag.
+ * Returns { text, cls }. Falls back gracefully when tag is missing or unparseable.
+ */
+function checkOpenStatus(node) {
+  const hours = node.tags && node.tags.opening_hours;
+  if (!hours) return { text: "hours unknown — your phone'll tell you", cls: "" };
+  if (/^24\/7$/i.test(hours.trim())) {
+    return { text: "open 24/7 ✨", cls: "open" };
+  }
+  // Try a very lenient parse: e.g. "Mo-Su 09:00-23:00" or "Mo-Fr 10:00-22:00; Sa-Su 10:00-23:00"
+  const now = new Date();
+  const dayKeys = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
+  const today = dayKeys[now.getDay()];
+  const nowMin = now.getHours() * 60 + now.getMinutes();
+  try {
+    const blocks = hours.split(";").map(s => s.trim());
+    for (const block of blocks) {
+      // match like "Mo-Fr 10:00-22:00" or "Sa-Su 11:00-23:00" or "Mo,We 09:00-21:00"
+      const m = block.match(/^([A-Za-z,\-\s]+)?\s*([0-2]?\d:\d{2})\s*-\s*([0-2]?\d:\d{2})$/);
+      if (!m) continue;
+      const daySpec = (m[1] || "Mo-Su").trim();
+      if (!dayIsInSpec(today, daySpec, dayKeys)) continue;
+      const [, , startStr, endStr] = m;
+      const start = toMins(startStr);
+      let end = toMins(endStr);
+      if (end < start) end += 24 * 60; // wraps past midnight
+      if (nowMin >= start && nowMin < end) {
+        return { text: `open now ✅  (until ${formatMins(end % (24*60))})`, cls: "open" };
+      }
+    }
+    return { text: "looks closed right now 😴", cls: "closed" };
+  } catch (e) {
+    return { text: "hours unclear — your phone'll tell you", cls: "" };
+  }
+}
+
+function dayIsInSpec(day, spec, dayKeys) {
+  // expand "Mo-Fr,Su" style. very lenient.
+  const dayIdx = dayKeys.indexOf(day);
+  const parts = spec.split(/[,\s]+/).filter(Boolean);
+  for (const p of parts) {
+    if (p === day) return true;
+    const r = p.match(/^([A-Z][a-z])-([A-Z][a-z])$/);
+    if (r) {
+      const a = dayKeys.indexOf(r[1]);
+      const b = dayKeys.indexOf(r[2]);
+      if (a < 0 || b < 0) continue;
+      if (a <= b) {
+        if (dayIdx >= a && dayIdx <= b) return true;
+      } else {
+        // wrap around (e.g. Fr-Mo)
+        if (dayIdx >= a || dayIdx <= b) return true;
+      }
+    }
+  }
+  return false;
+}
+
+function toMins(s) {
+  const [h, m] = s.split(":").map(Number);
+  return h * 60 + m;
+}
+function formatMins(m) {
+  const h = Math.floor(m / 60) % 24;
+  const mm = m % 60;
+  return `${String(h).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
+}
+
+function showError(title, htmlBody) {
+  document.getElementById("errTitle").textContent = title;
+  document.getElementById("errBody").innerHTML = htmlBody;
+  show("screenError");
 }
 
 function haversineKm(lat1, lon1, lat2, lon2) {
@@ -425,10 +580,10 @@ function haversineKm(lat1, lon1, lat2, lon2) {
 }
 
 /* ---------- confetti ---------- */
-const COLORS = ["#ff6fa3", "#ff8559", "#b06bff", "#87dafe", "#fff7a8", "#fff"];
+const COLORS = ["#ff2d8a", "#ff6b35", "#ffd23f", "#702082", "#ffffff"];
 function burstConfetti() {
   const wrap = document.getElementById("confettiWrap");
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 36; i++) {
     const c = document.createElement("div");
     c.className = "confetti";
     c.style.left = Math.random() * 100 + "vw";

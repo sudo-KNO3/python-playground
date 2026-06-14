@@ -1,0 +1,32 @@
+[package]
+name = "tacobell-finder"
+version = "0.1.0"
+edition = "2021"
+description = "Pre-baked nearest-Taco-Bell finder, compiled to WebAssembly."
+
+# wasm-pack's bundled wasm-opt is too old for the WASM features modern Rust
+# emits (bulk-memory, sign-extension). Disable it; the unoptimized .wasm is
+# only ~160KB and gzips to ~60KB on the wire. Install system binaryen via
+# apt if you want to shave another ~30KB.
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+serde = { version = "1", features = ["derive"] }
+serde-wasm-bindgen = "0.6"
+
+[build-dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Release profile tuned for WASM bundle size.
+[profile.release]
+opt-level = "z"      # optimize aggressively for size, not speed (search is microseconds either way)
+lto = true           # link-time optimization across crates
+codegen-units = 1    # better optimization at the cost of compile time
+panic = "abort"      # smaller binary; we don't need unwinding
+strip = true         # strip symbols
