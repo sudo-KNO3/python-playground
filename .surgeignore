@@ -1,0 +1,6 @@
+# Don't upload Rust source / build artifacts — only the compiled pkg/ matters.
+rust-tacobell/
+*.md
+.git/
+.gitignore
+build-wasm.sh

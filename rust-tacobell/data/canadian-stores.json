@@ -1,0 +1,1450 @@
+[
+  {
+    "lat": 43.8256585,
+    "lon": -79.5383333,
+    "name": "Taco Bell in Vaughan, ON - 1 Bass Pro Mills Drive",
+    "addr": "1 Bass Pro Mills Drive, Vaughan",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 11:00-21:00; Su 11:00-19:00",
+    "url": "https://locations.tacobell.ca/en/on/vaughan/1-bass-pro-mills-drive"
+  },
+  {
+    "lat": 44.349002,
+    "lon": -78.762544,
+    "name": "Taco Bell in Lindsay, ON - 1 Commerce Road",
+    "addr": "1 Commerce Road, Lindsay",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/lindsay/1-commerce-road"
+  },
+  {
+    "lat": 43.217,
+    "lon": -80.392,
+    "name": "Taco Bell in Brant, ON - 1 Hartley Ave",
+    "addr": "1 Hartley Ave, Brant",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-22:00; Fr,Sa 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/on/brant/1-hartley-ave"
+  },
+  {
+    "lat": 45.348094902118135,
+    "lon": -75.80473650981884,
+    "name": "Taco Bell in Nepean, ON - 100 Bayshore Drive",
+    "addr": "100 Bayshore Drive, Nepean",
+    "opening_hours": "Mo,We,Su 11:00-21:00; Tu,Th,Sa 11:00-21:30; Fr 11:00-22:30",
+    "url": "https://locations.tacobell.ca/en/on/nepean/100-bayshore-drive"
+  },
+  {
+    "lat": 43.5927495,
+    "lon": -79.642583,
+    "name": "Taco Bell in Mississauga, ON - 100 City Centre Dr",
+    "addr": "100 City Centre Dr, Mississauga",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 10:30-21:00; Su 11:00-19:00",
+    "url": "https://locations.tacobell.ca/en/on/mississauga/100-city-centre-dr"
+  },
+  {
+    "lat": 54.77144389690221,
+    "lon": -111.97256095383692,
+    "name": "Taco Bell in Lac La Biche, AB - 10003 101 Avenue",
+    "addr": "10003 101 Avenue, Lac La Biche",
+    "opening_hours": "Mo,Tu,We,Th,Sa 10:30-22:00; Fr 10:30-22:30; Su 10:30-21:00",
+    "url": "https://locations.tacobell.ca/en/ab/lac-la-biche/10003-101-avenue"
+  },
+  {
+    "lat": 43.696724743412474,
+    "lon": -79.79945464919385,
+    "name": "Taco Bell in Brampton, ON - 10068 McLaughlin Road",
+    "addr": "10068 McLaughlin Road, Brampton",
+    "opening_hours": "Mo,Tu,We,Th,Sa,Su 10:30-23:00; Fr 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/brampton/10068-mclaughlin-road"
+  },
+  {
+    "lat": 53.7006132851195,
+    "lon": -113.20495122047994,
+    "name": "Taco Bell in Fort Saskatchewan, AB - 10090 88th Avenue",
+    "addr": "10090 88th Avenue, Fort Saskatchewan",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-21:30",
+    "url": "https://locations.tacobell.ca/en/ab/fort-saskatchewan/10090-88th-avenue"
+  },
+  {
+    "lat": 43.45227580460541,
+    "lon": -80.44351837069411,
+    "name": "Taco Bell in Kitchener, ON - 1020 Ottawa Street North",
+    "addr": "1020 Ottawa Street North, Kitchener",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-23:00",
+    "url": "https://locations.tacobell.ca/en/on/kitchener/1020-ottawa-street-north"
+  },
+  {
+    "lat": 42.94031232807006,
+    "lon": -81.28108554786778,
+    "name": "Taco Bell - Closed in London, ON - 1026 Wonderland Road South",
+    "addr": "1026 Wonderland Road South, London",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 00:00-00:00",
+    "url": "https://locations.tacobell.ca/en/on/london/1026-wonderland-road-south"
+  },
+  {
+    "lat": 49.944380260667515,
+    "lon": -97.19599623614835,
+    "name": "Taco Bell in Winnipeg, MB - 1030 Keewatin Street",
+    "addr": "1030 Keewatin Street, Winnipeg",
+    "opening_hours": "Mo,Tu,We,Su 10:30-21:00; Th,Fr,Sa 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/mb/winnipeg/1030-keewatin-street"
+  },
+  {
+    "lat": 42.9403161320288,
+    "lon": -81.2810156032249,
+    "name": "Taco Bell in London, ON - 1040 Wonderland Road South",
+    "addr": "1040 Wonderland Road South, London",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-04:00",
+    "url": "https://locations.tacobell.ca/en/on/london/1040-wonderland-road-south"
+  },
+  {
+    "lat": 43.8764612,
+    "lon": -79.4116279,
+    "name": "Taco Bell in Richmond Hill, ON - 1070 Major Mackenzie Drive East",
+    "addr": "1070 Major Mackenzie Drive East, Richmond Hill",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-23:00",
+    "url": "https://locations.tacobell.ca/en/on/richmond-hill/1070-major-mackenzie-drive-east"
+  },
+  {
+    "lat": 50.002566216905855,
+    "lon": -110.6428384202551,
+    "name": "Taco Bell in Medicine Hat, AB - 1071 Ross Glen Drive Southeast",
+    "addr": "1071 Ross Glen Drive Southeast, Medicine Hat",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/ab/medicine-hat/1071-ross-glen-drive-southeast"
+  },
+  {
+    "lat": 43.660412,
+    "lon": -79.433999,
+    "name": "Taco Bell in Toronto, ON - 1090 Bloor Street West",
+    "addr": "1090 Bloor Street West, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-02:00; Fr,Sa 10:30-04:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/1090-bloor-street-west"
+  },
+  {
+    "lat": 43.1693721,
+    "lon": -80.2152786,
+    "name": "Taco Bell in Brantford, ON - 11 Sinclair Boulevard",
+    "addr": "11 Sinclair Boulevard, Brantford",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-20:00",
+    "url": "https://locations.tacobell.ca/en/on/brantford/11-sinclair-boulevard"
+  },
+  {
+    "lat": 48.382340505382516,
+    "lon": -89.30818618360306,
+    "name": "Taco Bell in Thunder Bay, ON - 1101 Arthur Street West",
+    "addr": "1101 Arthur Street West, Thunder Bay",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/thunder-bay/1101-arthur-street-west"
+  },
+  {
+    "lat": 42.9314007,
+    "lon": -81.2245415,
+    "name": "Taco Bell in London, ON - 1105 Wellington Road South",
+    "addr": "1105 Wellington Road South, London",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/on/london/1105-wellington-road-south"
+  },
+  {
+    "lat": 49.91732669169707,
+    "lon": -97.12996353421397,
+    "name": "Taco Bell in Winnipeg, MB - 1125 Main Street",
+    "addr": "1125 Main Street, Winnipeg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/mb/winnipeg/1125-main-street"
+  },
+  {
+    "lat": 43.01354146387945,
+    "lon": -81.21264471910254,
+    "name": "Taco Bell in London, ON - 1145 Highbury Ave",
+    "addr": "1145 Highbury Ave, London",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-02:00; Fr,Sa 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/london/1145-highbury-ave"
+  },
+  {
+    "lat": 43.25082547945736,
+    "lon": -79.81084493323834,
+    "name": "Taco Bell in Hamilton, ON - 1195 Barton Street East",
+    "addr": "1195 Barton Street East, Hamilton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/hamilton/1195-barton-street-east"
+  },
+  {
+    "lat": 51.16309618793664,
+    "lon": -114.12674444288372,
+    "name": "Taco Bell in Calgary, AB - 12222 Symons Valley Road NW",
+    "addr": "12222 Symons Valley Road NW, Calgary",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/ab/calgary/12222-symons-valley-road-nw"
+  },
+  {
+    "lat": 49.883343425947,
+    "lon": -97.18659807792658,
+    "name": "Taco Bell in Winnipeg, MB - 1275 Portage Avenue",
+    "addr": "1275 Portage Avenue, Winnipeg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/mb/winnipeg/1275-portage-avenue"
+  },
+  {
+    "lat": 52.12947600367718,
+    "lon": -106.68953059606606,
+    "name": "Taco Bell in Saskatoon, SK - 1306 22nd St",
+    "addr": "1306 22nd St, Saskatoon",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/sk/saskatoon/1306-22nd-st"
+  },
+  {
+    "lat": 43.93239427843824,
+    "lon": -78.87935683274839,
+    "name": "Taco Bell in Oshawa, ON - 1326 Simcoe St N",
+    "addr": "1326 Simcoe St N, Oshawa",
+    "opening_hours": "Mo,Tu,We,Su 10:30-01:00; Th,Fr,Sa 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/oshawa/1326-simcoe-st-n"
+  },
+  {
+    "lat": 42.9795454,
+    "lon": -82.3566127,
+    "name": "Taco Bell in Sarnia, ON - 1337 London Road",
+    "addr": "1337 London Road, Sarnia",
+    "opening_hours": "Mo,Tu,We,Su 10:30-00:00; Th,Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/sarnia/1337-london-road"
+  },
+  {
+    "lat": 43.76088765223441,
+    "lon": -79.27989599593283,
+    "name": "Taco Bell in Scarborough, ON - 1338 Kennedy Road",
+    "addr": "1338 Kennedy Road, Scarborough",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 10:30-23:00; Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/on/scarborough/1338-kennedy-road"
+  },
+  {
+    "lat": 46.51969594997212,
+    "lon": -80.94643883146496,
+    "name": "Taco Bell in SUDBURY, ON - 1349 LASALLE BLVD",
+    "addr": "1349 LASALLE BLVD, SUDBURY",
+    "opening_hours": "Mo,Tu,We,Th,Fr 10:30-20:00; Sa 10:30-18:00; Su 11:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/sudbury/1349-lasalle-blvd"
+  },
+  {
+    "lat": 43.8362894,
+    "lon": -79.0862354,
+    "name": "Taco Bell in Pickering, ON - 1355 Kingston Road",
+    "addr": "1355 Kingston Road, Pickering",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-21:00; Sa 11:00-18:00; Su 12:00-18:00",
+    "url": "https://locations.tacobell.ca/en/on/pickering/1355-kingston-road"
+  },
+  {
+    "lat": 49.13528088005351,
+    "lon": -122.84614667815207,
+    "name": "Taco Bell in Surrey, BC - 13577 73rd Avenue",
+    "addr": "13577 73rd Avenue, Surrey",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/bc/surrey/13577-73rd-avenue"
+  },
+  {
+    "lat": 45.9356657,
+    "lon": -66.6654214,
+    "name": "Taco Bell in Fredericton, NB - 1381 Regent St",
+    "addr": "1381 Regent St, Fredericton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 11:00-21:00; Su 12:00-17:00",
+    "url": "https://locations.tacobell.ca/en/nb/fredericton/1381-regent-st"
+  },
+  {
+    "lat": 53.453705237588174,
+    "lon": -113.56841117385291,
+    "name": "Taco Bell in Edmonton, AB - 14311 23rd Avenue",
+    "addr": "14311 23rd Avenue, Edmonton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 10:00-01:00; Su 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/ab/edmonton/14311-23rd-avenue"
+  },
+  {
+    "lat": 45.3389614729433,
+    "lon": -79.22008091817308,
+    "name": "Taco Bell in Huntsville, ON - 15 Hanes Road",
+    "addr": "15 Hanes Road, Huntsville",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/on/huntsville/15-hanes-road"
+  },
+  {
+    "lat": 43.20331460674649,
+    "lon": -79.89453284697287,
+    "name": "Taco Bell in Hamilton, ON - 1550 Upper James St",
+    "addr": "1550 Upper James St, Hamilton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-02:00; Fr,Sa 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/hamilton/1550-upper-james-st"
+  },
+  {
+    "lat": 43.8099457,
+    "lon": -79.2694809,
+    "name": "Taco Bell in Scarborough, ON - 1571 Sandhurst Circle",
+    "addr": "1571 Sandhurst Circle, Scarborough",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-21:00; Sa 11:00-20:00; Su 11:00-19:00",
+    "url": "https://locations.tacobell.ca/en/on/scarborough/1571-sandhurst-circle"
+  },
+  {
+    "lat": 43.00012717106643,
+    "lon": -81.1932073137238,
+    "name": "Taco Bell in London, ON - 1584 Dundas St",
+    "addr": "1584 Dundas St, London",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-01:00; Fr,Sa 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/london/1584-dundas-st"
+  },
+  {
+    "lat": 51.08113942575412,
+    "lon": -114.0242446239252,
+    "name": "Taco Bell in Calgary, AB - 1595 32 Ave NE",
+    "addr": "1595 32 Ave NE, Calgary",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/ab/calgary/1595-32-ave-ne"
+  },
+  {
+    "lat": 43.617351844688066,
+    "lon": -79.54410826709677,
+    "name": "Taco Bell in Etobicoke, ON - 1610 The Queensway",
+    "addr": "1610 The Queensway, Etobicoke",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/on/etobicoke/1610-the-queensway"
+  },
+  {
+    "lat": 43.7630052,
+    "lon": -79.2920449,
+    "name": "Taco Bell in Toronto, ON - 1620 Birchmount Road",
+    "addr": "1620 Birchmount Road, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/1620-birchmount-road"
+  },
+  {
+    "lat": 42.59361633736912,
+    "lon": -82.40343577240466,
+    "name": "Taco Bell - CLOSED in Wallaceburg, ON - 1644 Dufferin Avenue",
+    "addr": "1644 Dufferin Avenue, Wallaceburg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:00-22:00",
+    "url": "https://locations.tacobell.ca/en/on/wallaceburg/1644-dufferin-avenue"
+  },
+  {
+    "lat": 49.89917061525131,
+    "lon": -97.07150480537791,
+    "name": "Taco Bell in Winnipeg, MB - 1651 Regent Avenue",
+    "addr": "1651 Regent Avenue, Winnipeg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/mb/winnipeg/1651-regent-avenue"
+  },
+  {
+    "lat": 42.307436620107,
+    "lon": -82.87004729006026,
+    "name": "Taco Bell in Windsor, ON - 1655 Manning Road",
+    "addr": "1655 Manning Road, Windsor",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-01:00; Fr,Sa 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/windsor/1655-manning-road"
+  },
+  {
+    "lat": 44.03251036691442,
+    "lon": -79.47465238367458,
+    "name": "Taco Bell in Newmarket, ON - 16599 Yonge Street",
+    "addr": "16599 Yonge Street, Newmarket",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/on/newmarket/16599-yonge-street"
+  },
+  {
+    "lat": 42.858060706635506,
+    "lon": -80.70691563151479,
+    "name": "Taco Bell in Tillsonburg, ON - 166 Simcoe Street",
+    "addr": "166 Simcoe Street, Tillsonburg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-21:00",
+    "url": "https://locations.tacobell.ca/en/on/tillsonburg/166-simcoe-street"
+  },
+  {
+    "lat": 44.23770967115461,
+    "lon": -76.5691009640312,
+    "name": "Taco Bell in Kingston, ON - 1668 Bath Road",
+    "addr": "1668 Bath Road, Kingston",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/kingston/1668-bath-road"
+  },
+  {
+    "lat": 43.02563946816738,
+    "lon": -81.27847800305842,
+    "name": "Taco Bell in London, ON - 1680 Richmond Street",
+    "addr": "1680 Richmond Street, London",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-21:00; Sa 11:00-18:00; Su 11:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/london/1680-richmond-street"
+  },
+  {
+    "lat": 43.743077560175905,
+    "lon": -79.60292792207281,
+    "name": "Taco Bell in Etobicoke, ON - 1727 Albion Road",
+    "addr": "1727 Albion Road, Etobicoke",
+    "opening_hours": "Mo,Tu,We,Th 11:00-23:00; Fr,Sa 11:00-00:00; Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/on/etobicoke/1727-albion-road"
+  },
+  {
+    "lat": 44.0574448,
+    "lon": -79.4858624,
+    "name": "Taco Bell in Newmarket, ON - 17600 Yonge Street North",
+    "addr": "17600 Yonge Street North, Newmarket",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 11:00-20:00; Su 12:00-19:00",
+    "url": "https://locations.tacobell.ca/en/on/newmarket/17600-yonge-street-north"
+  },
+  {
+    "lat": 49.10386164974239,
+    "lon": -122.73056056157422,
+    "name": "Taco Bell in Surrey, BC - 17740 56 Avenue",
+    "addr": "17740 56 Avenue, Surrey",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:00-22:30; Fr,Sa 10:00-23:00",
+    "url": "https://locations.tacobell.ca/en/bc/surrey/17740-56-avenue"
+  },
+  {
+    "lat": 42.283840924311235,
+    "lon": -83.05519924378324,
+    "name": "Taco Bell in Windsor, ON - 1790 Huron Church Rd",
+    "addr": "1790 Huron Church Rd, Windsor",
+    "opening_hours": "Mo,Tu,We,Su 10:30-01:00; Th,Fr,Sa 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/windsor/1790-huron-church-rd"
+  },
+  {
+    "lat": 43.7785466,
+    "lon": -79.3431608,
+    "name": "Taco Bell in Toronto, ON - 1800 Sheppard Ave E",
+    "addr": "1800 Sheppard Ave E, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 11:00-21:00; Su 11:00-19:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/1800-sheppard-ave-e"
+  },
+  {
+    "lat": 43.046439,
+    "lon": -81.260455,
+    "name": "Taco Bell in London, ON - 1850 Adelaide St N",
+    "addr": "1850 Adelaide St N, London",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/london/1850-adelaide-st-n"
+  },
+  {
+    "lat": 43.00856443507193,
+    "lon": -81.33631976280782,
+    "name": "Taco Bell in London, ON - 1915 Hyde Park Road",
+    "addr": "1915 Hyde Park Road, London",
+    "opening_hours": "Mo,We,Th 11:00-21:00; Tu,Fr,Sa 11:00-22:00; Su 12:00-21:00",
+    "url": "https://locations.tacobell.ca/en/on/london/1915-hyde-park-road"
+  },
+  {
+    "lat": 49.11950071544344,
+    "lon": -122.66900458489796,
+    "name": "Taco Bell in Langley, BC - 19971 64th Avenue",
+    "addr": "19971 64th Avenue, Langley",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/bc/langley/19971-64th-avenue"
+  },
+  {
+    "lat": 43.26583963514284,
+    "lon": -79.95421199995909,
+    "name": "Taco Bell in Hamilton, ON - 2 King Street West",
+    "addr": "2 King Street West, Hamilton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 11:00-17:00; Su 12:00-16:00",
+    "url": "https://locations.tacobell.ca/en/on/hamilton/2-king-street-west"
+  },
+  {
+    "lat": 43.5668371,
+    "lon": -80.2759151,
+    "name": "Taco Bell in Guelph, ON - 20 Woodlawn",
+    "addr": "20 Woodlawn, Guelph",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-01:00; Fr,Sa 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/guelph/20-woodlawn"
+  },
+  {
+    "lat": 50.70752875254768,
+    "lon": -113.97567948724729,
+    "name": "Taco Bell in Okotoks, AB - 200 Southridge Drive",
+    "addr": "200 Southridge Drive, Okotoks",
+    "opening_hours": "Mo,Tu,We,Su 11:00-20:00; Th,Fr,Sa 11:00-21:00",
+    "url": "https://locations.tacobell.ca/en/ab/okotoks/200-southridge-drive"
+  },
+  {
+    "lat": 46.3327415,
+    "lon": -79.4671211,
+    "name": "Taco Bell in North Bay, ON - 2021 Algonquin Avenue",
+    "addr": "2021 Algonquin Avenue, North Bay",
+    "opening_hours": "Mo,Tu,We,Su 10:30-02:00; Th,Fr,Sa 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/north-bay/2021-algonquin-avenue"
+  },
+  {
+    "lat": 49.814615355343314,
+    "lon": -97.15246093707526,
+    "name": "Taco Bell in Winnipeg, MB - 2079 Pembi Highway",
+    "addr": "2079 Pembi Highway, Winnipeg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/mb/winnipeg/2079-pembi-highway"
+  },
+  {
+    "lat": 43.174595262551094,
+    "lon": -79.78854559029381,
+    "name": "Taco Bell in Hannon, ON - 2154 Rymal Road East",
+    "addr": "2154 Rymal Road East, Hannon",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/hannon/2154-rymal-road-east"
+  },
+  {
+    "lat": 43.530482691766125,
+    "lon": -79.65342620510253,
+    "name": "Taco Bell in Mississauga, ON - 2225 Erin Mills Parkway",
+    "addr": "2225 Erin Mills Parkway, Mississauga",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/on/mississauga/2225-erin-mills-parkway"
+  },
+  {
+    "lat": 43.836664725963246,
+    "lon": -79.50894155929842,
+    "name": "Taco Bell in Vaughan, ON - 2268 Rutherford Road",
+    "addr": "2268 Rutherford Road, Vaughan",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:00-02:00",
+    "url": "https://locations.tacobell.ca/en/on/vaughan/2268-rutherford-road"
+  },
+  {
+    "lat": 49.8781287,
+    "lon": -119.4402145,
+    "name": "Taco Bell in Kelowna, BC - 2271 Harvey Avenue",
+    "addr": "2271 Harvey Avenue, Kelowna",
+    "opening_hours": "Mo,Tu,Su 10:00-18:00; We,Th,Fr 10:00-21:00; Sa 09:00-18:00",
+    "url": "https://locations.tacobell.ca/en/bc/kelowna/2271-harvey-avenue"
+  },
+  {
+    "lat": 43.70741027662568,
+    "lon": -79.39905612150942,
+    "name": "Taco Bell in Toronto, ON - 2300 Yonge Street",
+    "addr": "2300 Yonge Street, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-18:00; Sa,Su 00:00-00:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/2300-yonge-street"
+  },
+  {
+    "lat": 42.236818,
+    "lon": -83.018352,
+    "name": "Taco Bell in LaSalle, ON - 2301 Sandwich W Pkwy",
+    "addr": "2301 Sandwich W Pkwy, LaSalle",
+    "opening_hours": "Mo,Tu,We,Su 10:30-01:00; Th,Fr,Sa 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/lasalle/2301-sandwich-w-pkwy"
+  },
+  {
+    "lat": 45.36904868919956,
+    "lon": -63.301544534193525,
+    "name": "Taco Bell in Truro, NS - 242 Robie Street",
+    "addr": "242 Robie Street, Truro",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-23:00; Fr,Sa 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/ns/truro/242-robie-street"
+  },
+  {
+    "lat": 43.768868050582704,
+    "lon": -79.18571493460081,
+    "name": "Taco Bell in Scarborough, ON - 245 Morningside Avenue",
+    "addr": "245 Morningside Avenue, Scarborough",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-23:00; Fr,Sa 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/scarborough/245-morningside-avenue"
+  },
+  {
+    "lat": 43.3858801,
+    "lon": -80.4104473,
+    "name": "Taco Bell in Kitchener, ON - 2480 Homer Watson Boulevard",
+    "addr": "2480 Homer Watson Boulevard, Kitchener",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/kitchener/2480-homer-watson-boulevard"
+  },
+  {
+    "lat": 43.71535860699697,
+    "lon": -79.72227279065827,
+    "name": "Taco Bell in Brampton, ON - 25 Peel Centre Dr",
+    "addr": "25 Peel Centre Dr, Brampton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 10:30-21:00; Su 11:30-19:00",
+    "url": "https://locations.tacobell.ca/en/on/brampton/25-peel-centre-dr"
+  },
+  {
+    "lat": 43.656142,
+    "lon": -79.377208,
+    "name": "Taco Bell in Toronto, ON - 252 Church Street",
+    "addr": "252 Church Street, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59",
+    "url": "https://locations.tacobell.ca/en/on/toronto/252-church-street"
+  },
+  {
+    "lat": 42.9646247,
+    "lon": -82.3759657,
+    "name": "Taco Bell in Sarnia, ON - 260 Indian Rd S",
+    "addr": "260 Indian Rd S, Sarnia",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/sarnia/260-indian-rd-s"
+  },
+  {
+    "lat": 51.2028342,
+    "lon": -113.9905198,
+    "name": "Taco Bell in Rocky View, AB - 261055 Crossiron Blvd",
+    "addr": "261055 Crossiron Blvd, Rocky View",
+    "opening_hours": "Mo,Tu,We,Th 11:00-20:30; Fr 11:00-21:00; Sa 11:00-17:30; Su 11:30-17:00",
+    "url": "https://locations.tacobell.ca/en/ab/rocky-view/261055-crossiron-blvd"
+  },
+  {
+    "lat": 44.523325044201,
+    "lon": -80.00942829042052,
+    "name": "Taco Bell in Wasaga Beach, ON - 281 Main Street",
+    "addr": "281 Main Street, Wasaga Beach",
+    "opening_hours": "Mo,Tu,We,Th 11:00-20:00; Fr,Sa 11:00-21:00; Su 12:00-21:00",
+    "url": "https://locations.tacobell.ca/en/on/wasaga-beach/281-main-street"
+  },
+  {
+    "lat": 52.17414957521899,
+    "lon": -106.64598170259588,
+    "name": "Taco Bell - Closed in Saskatoon, SK - 2830 Millar Avenue",
+    "addr": "2830 Millar Avenue, Saskatoon",
+    "opening_hours": "Mo,Tu,We,Su 11:00-00:00; Th 10:30-00:00; Fr,Sa 11:00-01:00",
+    "url": "https://locations.tacobell.ca/en/sk/saskatoon/2830-millar-avenue"
+  },
+  {
+    "lat": 46.10857573014643,
+    "lon": -60.22422658222573,
+    "name": "Taco Bell in Sydney River, NS - 29 Keltic Drive",
+    "addr": "29 Keltic Drive, Sydney River",
+    "opening_hours": "Mo,Tu,We 11:00-22:00; Th,Fr,Sa 11:00-23:00; Su 11:00-21:00",
+    "url": "https://locations.tacobell.ca/en/ns/sydney-river/29-keltic-drive"
+  },
+  {
+    "lat": 44.266928237690315,
+    "lon": -76.49991101064799,
+    "name": "Taco Bell in Kingston, ON - 29 Warne Crescent",
+    "addr": "29 Warne Crescent, Kingston",
+    "opening_hours": "Mo,We,Su 11:00-21:00; Tu,Th,Fr,Sa 11:00-21:30",
+    "url": "https://locations.tacobell.ca/en/on/kingston/29-warne-crescent"
+  },
+  {
+    "lat": 52.11517444604714,
+    "lon": -106.61157210391232,
+    "name": "Taco Bell in Saskatoon, SK - 2941 8th St",
+    "addr": "2941 8th St, Saskatoon",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/sk/saskatoon/2941-8th-st"
+  },
+  {
+    "lat": 43.4252096,
+    "lon": -80.4385463,
+    "name": "Taco Bell in Kitchener, ON - 2960 Kingsway Drive",
+    "addr": "2960 Kingsway Drive, Kitchener",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-19:00; Sa,Su 11:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/kitchener/2960-kingsway-drive"
+  },
+  {
+    "lat": 49.277967,
+    "lon": -122.7951493,
+    "name": "Taco Bell in Coquitlam, BC - 2991 Lougheed Highway",
+    "addr": "2991 Lougheed Highway, Coquitlam",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/bc/coquitlam/2991-lougheed-highway"
+  },
+  {
+    "lat": 43.7342938,
+    "lon": -80.9662359,
+    "name": "Taco Bell in Listowel, ON - 300 Mitchell Rd South",
+    "addr": "300 Mitchell Rd South, Listowel",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-22:30; Fr,Sa 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/on/listowel/300-mitchell-rd-south"
+  },
+  {
+    "lat": 42.297905627806536,
+    "lon": -83.01974281349445,
+    "name": "Taco Bell in Windsor, ON - 300 Tecumseh Rd N",
+    "addr": "300 Tecumseh Rd N, Windsor",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-01:00; Fr,Sa 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/windsor/300-tecumseh-rd-n"
+  },
+  {
+    "lat": 42.31477303727629,
+    "lon": -83.0362743618816,
+    "name": "Taco Bell in Windsor, ON - 301 Ouellette Ave",
+    "addr": "301 Ouellette Ave, Windsor",
+    "opening_hours": "Mo,Tu,We,Su 10:00-00:00; Th 10:00-03:00; Fr,Sa 10:00-04:00",
+    "url": "https://locations.tacobell.ca/en/on/windsor/301-ouellette-ave"
+  },
+  {
+    "lat": 45.88976493049631,
+    "lon": -77.26149964001516,
+    "name": "Taco Bell in Petawawa, ON - 3025 Petawawa Blvd",
+    "addr": "3025 Petawawa Blvd, Petawawa",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/petawawa/3025-petawawa-blvd"
+  },
+  {
+    "lat": 45.42928604707618,
+    "lon": -75.68552714307134,
+    "name": "Taco Bell in Ottawa, ON - 305 Rideau Street",
+    "addr": "305 Rideau Street, Ottawa",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59",
+    "url": "https://locations.tacobell.ca/en/on/ottawa/305-rideau-street"
+  },
+  {
+    "lat": 53.89738905005553,
+    "lon": -122.77725292138823,
+    "name": "Taco Bell in Prince George, BC - 3055 Massey Drive",
+    "addr": "3055 Massey Drive, Prince George",
+    "opening_hours": "Mo,Tu,We,Sa 09:30-18:00; Th,Fr 09:30-21:00; Su 12:00-17:00",
+    "url": "https://locations.tacobell.ca/en/bc/prince-george/3055-massey-drive"
+  },
+  {
+    "lat": 42.2717065008496,
+    "lon": -83.01239013098855,
+    "name": "Taco Bell in Windsor, ON - 3058 Dougall Ave",
+    "addr": "3058 Dougall Ave, Windsor",
+    "opening_hours": "Mo,Tu,Su 10:30-03:00; We,Th,Fr,Sa 10:30-04:00",
+    "url": "https://locations.tacobell.ca/en/on/windsor/3058-dougall-ave"
+  },
+  {
+    "lat": 43.734807017915045,
+    "lon": -79.82435333704755,
+    "name": "Taco Bell in Brampton, ON - 3058 Mayfield Road",
+    "addr": "3058 Mayfield Road, Brampton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-23:00; Fr,Sa 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/brampton/3058-mayfield-road"
+  },
+  {
+    "lat": 43.8068202,
+    "lon": -79.2208236,
+    "name": "Taco Bell in Scarborough, ON - 31 Tapscott Road",
+    "addr": "31 Tapscott Road, Scarborough",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 10:30-23:00; Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/on/scarborough/31-tapscott-road"
+  },
+  {
+    "lat": 42.27474411308236,
+    "lon": -83.00125975666444,
+    "name": "Taco Bell in Windsor, ON - 3100 Howard Ave",
+    "addr": "3100 Howard Ave, Windsor",
+    "opening_hours": "Mo,Tu,We,Th,Fr 10:00-21:00; Sa 10:00-18:00; Su 11:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/windsor/3100-howard-ave"
+  },
+  {
+    "lat": 44.40145088723697,
+    "lon": -79.69985727615007,
+    "name": "Taco Bell in Barrie, ON - 315 Bayfield Street North",
+    "addr": "315 Bayfield Street North, Barrie",
+    "opening_hours": "Mo,Tu,We,Th,Su 11:00-22:00; Fr,Sa 11:00-23:00",
+    "url": "https://locations.tacobell.ca/en/on/barrie/315-bayfield-street-north"
+  },
+  {
+    "lat": 42.41307798271867,
+    "lon": -82.19803907321847,
+    "name": "Taco Bell in Chatham, ON - 328 St Clair Street",
+    "addr": "328 St Clair Street, Chatham",
+    "opening_hours": "Mo,Su 10:30-02:00; Tu,We,Th,Fr,Sa 10:30-04:00",
+    "url": "https://locations.tacobell.ca/en/on/chatham/328-st-clair-street"
+  },
+  {
+    "lat": 42.03794771494313,
+    "lon": -82.72473740071582,
+    "name": "Taco Bell in Kingsville, ON - 329 Main Street East",
+    "addr": "329 Main Street East, Kingsville",
+    "opening_hours": "Mo,Tu,We 10:30-22:00; Th,Su 10:30-23:00; Fr,Sa 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/kingsville/329-main-street-east"
+  },
+  {
+    "lat": 51.081914784989536,
+    "lon": -113.9882779726193,
+    "name": "Taco Bell in Calgary, AB - 3310 32nd Street NE",
+    "addr": "3310 32nd Street NE, Calgary",
+    "opening_hours": "Mo,Tu,Th,Fr,Sa 10:30-00:00; We,Su 10:30-23:30",
+    "url": "https://locations.tacobell.ca/en/ab/calgary/3310-32nd-street-ne"
+  },
+  {
+    "lat": 53.56986494361775,
+    "lon": -113.3933209504463,
+    "name": "Taco Bell in Edmonton, AB - 3349 118th Avenue NW",
+    "addr": "3349 118th Avenue NW, Edmonton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-21:00",
+    "url": "https://locations.tacobell.ca/en/ab/edmonton/3349-118th-avenue-nw"
+  },
+  {
+    "lat": 44.186109254322915,
+    "lon": -77.39579814655664,
+    "name": "Taco Bell in Belleville, ON - 336 Front Street North",
+    "addr": "336 Front Street North, Belleville",
+    "opening_hours": "Mo,Tu,We,Su 10:30-01:00; Th,Fr,Sa 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/belleville/336-front-street-north"
+  },
+  {
+    "lat": 42.30447670077864,
+    "lon": -82.98149806338729,
+    "name": "Taco Bell in Windsor, ON - 3419 Tecumseh Rd",
+    "addr": "3419 Tecumseh Rd, Windsor",
+    "opening_hours": "Mo,Tu,We,Su 10:30-02:00; Th,Fr,Sa 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/windsor/3419-tecumseh-rd"
+  },
+  {
+    "lat": 53.471137,
+    "lon": -113.4921172,
+    "name": "Taco Bell in Edmonton, AB - 3431 Gateway Blvd, Building 6",
+    "addr": "3431 Gateway Blvd, Building 6, Edmonton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/ab/edmonton/3431-gateway-blvd-building-6"
+  },
+  {
+    "lat": 56.75733188419882,
+    "lon": -111.45610084467424,
+    "name": "Taco Bell in Fort McMurray, AB - 347 Powder Drive",
+    "addr": "347 Powder Drive, Fort McMurray",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/ab/fort-mcmurray/347-powder-drive"
+  },
+  {
+    "lat": 43.75748084038488,
+    "lon": -79.22931182134383,
+    "name": "Taco Bell in Scarborough, ON - 3495 Lawrence Avenue East",
+    "addr": "3495 Lawrence Avenue East, Scarborough",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-21:00; Sa 11:00-18:00; Su 12:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/scarborough/3495-lawrence-avenue-east"
+  },
+  {
+    "lat": 43.3938003,
+    "lon": -80.3201725,
+    "name": "Taco Bell in Cambridge, ON - 355 Hespeler Road",
+    "addr": "355 Hespeler Road, Cambridge",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-19:00; Sa 11:00-18:00; Su 11:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/cambridge/355-hespeler-road"
+  },
+  {
+    "lat": 49.882453173352985,
+    "lon": -97.31297415153789,
+    "name": "Taco Bell in Winnipeg, MB - 3651 Portage Avenue",
+    "addr": "3651 Portage Avenue, Winnipeg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/mb/winnipeg/3651-portage-avenue"
+  },
+  {
+    "lat": 43.117387393734994,
+    "lon": -79.12421988050573,
+    "name": "Taco Bell in Niagara Falls, ON - 3770 Montrose Rd",
+    "addr": "3770 Montrose Rd, Niagara Falls",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-23:00; Fr,Sa 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/niagara-falls/3770-montrose-rd"
+  },
+  {
+    "lat": 43.75884262347261,
+    "lon": -79.48921376380633,
+    "name": "Taco Bell in North York, ON - 3777 Keele Street",
+    "addr": "3777 Keele Street, North York",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/on/north-york/3777-keele-street"
+  },
+  {
+    "lat": 43.92110120404947,
+    "lon": -80.08658253926944,
+    "name": "Taco Bell in Orangeville, ON - 38 Broadway Avenue",
+    "addr": "38 Broadway Avenue, Orangeville",
+    "opening_hours": "Mo,Tu,We,Th,Su 11:00-22:00; Fr,Sa 11:00-23:00",
+    "url": "https://locations.tacobell.ca/en/on/orangeville/38-broadway-avenue"
+  },
+  {
+    "lat": 46.537590109105615,
+    "lon": -84.3197603958981,
+    "name": "Taco Bell in Sault Ste Marie, ON - 389 Great Northern Road",
+    "addr": "389 Great Northern Road, Sault Ste Marie",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/on/sault-ste-marie/389-great-northern-road"
+  },
+  {
+    "lat": 44.1891995,
+    "lon": -77.4016952,
+    "name": "Taco Bell in Belleville, ON - 390 North Front Street",
+    "addr": "390 North Front Street, Belleville",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-19:00; Sa 11:00-17:00; Su 12:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/belleville/390-north-front-street"
+  },
+  {
+    "lat": 43.48374052926042,
+    "lon": -80.52508318245123,
+    "name": "Taco Bell in Waterloo, ON - 391 Weber Street North",
+    "addr": "391 Weber Street North, Waterloo",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-23:00",
+    "url": "https://locations.tacobell.ca/en/on/waterloo/391-weber-street-north"
+  },
+  {
+    "lat": 43.75615136990059,
+    "lon": -79.51556000305844,
+    "name": "Taco Bell in Toronto, ON - 3979 Jane St",
+    "addr": "3979 Jane St, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/3979-jane-st"
+  },
+  {
+    "lat": 45.45582296481919,
+    "lon": -75.50544688797375,
+    "name": "Taco Bell in Gloucester, ON - 4027 Innes Road",
+    "addr": "4027 Innes Road, Gloucester",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:00-01:00",
+    "url": "https://locations.tacobell.ca/en/on/gloucester/4027-innes-road"
+  },
+  {
+    "lat": 43.52170909277689,
+    "lon": -79.89324438796656,
+    "name": "Taco Bell in Milton, ON - 405 Martin Street",
+    "addr": "405 Martin Street, Milton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-23:00; Fr,Sa 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/milton/405-martin-street"
+  },
+  {
+    "lat": 45.025296405661656,
+    "lon": -74.74499466821504,
+    "name": "Taco Bell in Cornwall, ON - 418 Ninth St W",
+    "addr": "418 Ninth St W, Cornwall",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:00-00:00",
+    "url": "https://locations.tacobell.ca/en/on/cornwall/418-ninth-st-w"
+  },
+  {
+    "lat": 43.84086669384832,
+    "lon": -79.03426794184797,
+    "name": "Taco Bell in Ajax, ON - 422 Bayly Street West",
+    "addr": "422 Bayly Street West, Ajax",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/on/ajax/422-bayly-street-west"
+  },
+  {
+    "lat": 43.20636869151592,
+    "lon": -79.59817912240338,
+    "name": "Taco Bell in Grimsby, ON - 424 South Service Road",
+    "addr": "424 South Service Road, Grimsby",
+    "opening_hours": "Mo,Tu,We,Th,Su 11:00-21:00; Fr,Sa 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/on/grimsby/424-south-service-road"
+  },
+  {
+    "lat": 43.51842291808014,
+    "lon": -80.23824312722587,
+    "name": "Taco Bell in Guelph, ON - 435 Stone Road West",
+    "addr": "435 Stone Road West, Guelph",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-21:00; Sa 11:00-18:00; Su 11:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/guelph/435-stone-road-west"
+  },
+  {
+    "lat": 43.784008725568434,
+    "lon": -79.5704356315148,
+    "name": "Taco Bell in Woodbridge, ON - 4431 Highway #7",
+    "addr": "4431 Highway #7, Woodbridge",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-23:00",
+    "url": "https://locations.tacobell.ca/en/on/woodbridge/4431-highway-7"
+  },
+  {
+    "lat": 43.6609547858605,
+    "lon": -79.38336668509663,
+    "name": "Taco Bell in Toronto, ON - 444 Yonge Street",
+    "addr": "444 Yonge Street, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr 10:00-21:00; Sa,Su 10:00-19:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/444-yonge-street"
+  },
+  {
+    "lat": 43.76397597821852,
+    "lon": -79.66882729042051,
+    "name": "Taco Bell in Brampton, ON - 45 Cherrycrest Drive",
+    "addr": "45 Cherrycrest Drive, Brampton",
+    "opening_hours": "Mo,Tu,We,Su 10:30-00:00; Th,Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/brampton/45-cherrycrest-drive"
+  },
+  {
+    "lat": 46.09462349086751,
+    "lon": -64.7565726685288,
+    "name": "Taco Bell in Dieppe, NB - 451 Paul Street",
+    "addr": "451 Paul Street, Dieppe",
+    "opening_hours": "Mo,Tu,We,Su 11:00-22:00; Th,Fr,Sa 11:00-23:00",
+    "url": "https://locations.tacobell.ca/en/nb/dieppe/451-paul-street"
+  },
+  {
+    "lat": 50.278707487110985,
+    "lon": -119.26884953153069,
+    "name": "Taco Bell in Vernon, BC - 4510 – 27th Street",
+    "addr": "4510 – 27th Street, Vernon",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/bc/vernon/4510--27th-street"
+  },
+  {
+    "lat": 49.1428878859766,
+    "lon": -121.96932519716643,
+    "name": "Taco Bell in Sardis, BC - 45367 Luckakuck Way",
+    "addr": "45367 Luckakuck Way, Sardis",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/bc/sardis/45367-luckakuck-way"
+  },
+  {
+    "lat": 43.5446839233417,
+    "lon": -80.30813391354172,
+    "name": "Taco Bell in Guelph, ON - 455 Woodlawn Rd W",
+    "addr": "455 Woodlawn Rd W, Guelph",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/on/guelph/455-woodlawn-rd-w"
+  },
+  {
+    "lat": 45.29956220487979,
+    "lon": -75.88677923599727,
+    "name": "Taco Bell in Kanata, ON - 461 Hazeldean Road",
+    "addr": "461 Hazeldean Road, Kanata",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:00-00:00; Fr,Sa 10:00-02:00",
+    "url": "https://locations.tacobell.ca/en/on/kanata/461-hazeldean-road"
+  },
+  {
+    "lat": 47.51694265227995,
+    "lon": -52.806094149774296,
+    "name": "Taco Bell in Mount Pearl, NL - 47 Commonwealth Avenue",
+    "addr": "47 Commonwealth Avenue, Mount Pearl",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/nl/mount-pearl/47-commonwealth-avenue"
+  },
+  {
+    "lat": 43.761654836945304,
+    "lon": -79.41157292599226,
+    "name": "Taco Bell in Toronto, ON - 4804 Yonge Street",
+    "addr": "4804 Yonge Street, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 00:00-00:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/4804-yonge-street"
+  },
+  {
+    "lat": 53.54161918192088,
+    "lon": -113.41749821288013,
+    "name": "Taco Bell in Edmonton, AB - 4950 101st Avenue",
+    "addr": "4950 101st Avenue, Edmonton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/ab/edmonton/4950-101st-avenue"
+  },
+  {
+    "lat": 43.666139398794556,
+    "lon": -79.73787561301832,
+    "name": "Taco Bell in Brampton, ON - 499 Main Street South",
+    "addr": "499 Main Street South, Brampton",
+    "opening_hours": "Mo,Tu,We,Th,Fr 10:00-21:00; Sa 09:30-18:00; Su 10:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/brampton/499-main-street-south"
+  },
+  {
+    "lat": 45.5978425575633,
+    "lon": -74.60974352405863,
+    "name": "Taco Bell in Hawkesbury, ON - 500 Spence Avenue",
+    "addr": "500 Spence Avenue, Hawkesbury",
+    "opening_hours": "Mo,Tu,We,Su 10:30-22:00; Th,Fr,Sa 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/hawkesbury/500-spence-avenue"
+  },
+  {
+    "lat": 43.8704582,
+    "lon": -79.287111,
+    "name": "Taco Bell in Markham, ON - 5000 Hwy 7 E",
+    "addr": "5000 Hwy 7 E, Markham",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-21:00; Sa,Su 11:00-18:00",
+    "url": "https://locations.tacobell.ca/en/on/markham/5000-hwy-7-e"
+  },
+  {
+    "lat": 43.558455959498396,
+    "lon": -79.71183189496574,
+    "name": "Taco Bell in Mississauga, ON - 5100 Erin Mills Parkway",
+    "addr": "5100 Erin Mills Parkway, Mississauga",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-20:00; Sa,Su 11:00-18:00",
+    "url": "https://locations.tacobell.ca/en/on/mississauga/5100-erin-mills-parkway"
+  },
+  {
+    "lat": 42.09258840740196,
+    "lon": -83.106459,
+    "name": "Taco Bell in Amherstburg, ON - 527 Sandwich Street South",
+    "addr": "527 Sandwich Street South, Amherstburg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/amherstburg/527-sandwich-street-south"
+  },
+  {
+    "lat": 43.845957180412654,
+    "lon": -66.11675365889549,
+    "name": "Taco Bell in Yarmouth, NS - 536 Main Street",
+    "addr": "536 Main Street, Yarmouth",
+    "opening_hours": "Mo,Tu,We,Su 11:00-21:00; Th,Fr,Sa 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/ns/yarmouth/536-main-street"
+  },
+  {
+    "lat": 45.31140699309914,
+    "lon": -66.01422879470944,
+    "name": "Taco Bell in Saint John, NB - 545 Westmorland Place",
+    "addr": "545 Westmorland Place, Saint John",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 11:00-22:00; Su 11:00-21:00",
+    "url": "https://locations.tacobell.ca/en/nb/saint-john/545-westmorland-place"
+  },
+  {
+    "lat": 53.5416383253628,
+    "lon": -113.26872925349241,
+    "name": "Taco Bell in Sherwood Park, AB - 550 Baseline Road",
+    "addr": "550 Baseline Road, Sherwood Park",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-23:00; Fr,Sa 10:30-23:30",
+    "url": "https://locations.tacobell.ca/en/ab/sherwood-park/550-baseline-road"
+  },
+  {
+    "lat": 50.66315703320569,
+    "lon": -120.3519424258304,
+    "name": "Taco Bell in Kamloops, BC - 555 Notre Dame Drive",
+    "addr": "555 Notre Dame Drive, Kamloops",
+    "opening_hours": "Mo,Tu,We,Th,Fr 10:00-22:00; Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/bc/kamloops/555-notre-dame-drive"
+  },
+  {
+    "lat": 53.272163754573185,
+    "lon": -113.55182477607582,
+    "name": "Taco Bell in Leduc, AB - 5706 50th Street",
+    "addr": "5706 50th Street, Leduc",
+    "opening_hours": "Mo,Tu,We,Th,Su 11:00-21:00; Fr,Sa 11:00-21:30",
+    "url": "https://locations.tacobell.ca/en/ab/leduc/5706-50th-street"
+  },
+  {
+    "lat": 44.28568335200634,
+    "lon": -78.32925566232429,
+    "name": "Taco Bell in Peterborough, ON - 595 Lansdowne Street West",
+    "addr": "595 Lansdowne Street West, Peterborough",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/peterborough/595-lansdowne-street-west"
+  },
+  {
+    "lat": 42.5851442275935,
+    "lon": -82.38537277534924,
+    "name": "Taco Bell in Wallaceburg, ON - 60 McNaughton Ave",
+    "addr": "60 McNaughton Ave, Wallaceburg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/wallaceburg/60-mcnaughton-ave"
+  },
+  {
+    "lat": 43.68189504549505,
+    "lon": -79.47178347088625,
+    "name": "Taco Bell in Toronto, ON - 605 Rogers Road",
+    "addr": "605 Rogers Road, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/605-rogers-road"
+  },
+  {
+    "lat": 43.67856173670062,
+    "lon": -79.34590030613423,
+    "name": "Taco Bell in Toronto, ON - 609 Danforth Avenue",
+    "addr": "609 Danforth Avenue, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-02:00; Fr,Sa 10:30-04:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/609-danforth-avenue"
+  },
+  {
+    "lat": 43.79597919236296,
+    "lon": -79.42207313031454,
+    "name": "Taco Bell in Toronto, ON - 6364 Yonge Street",
+    "addr": "6364 Yonge Street, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-19:00; Sa 11:00-17:00; Su 12:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/6364-yonge-street"
+  },
+  {
+    "lat": 43.35626769676922,
+    "lon": -80.9950975656414,
+    "name": "Taco Bell in Stratford, ON - 641 Erie Street",
+    "addr": "641 Erie Street, Stratford",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/on/stratford/641-erie-street"
+  },
+  {
+    "lat": 42.905746,
+    "lon": -78.938285,
+    "name": "Taco Bell in Fort Erie, ON - 644 Garrison Road",
+    "addr": "644 Garrison Road, Fort Erie",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-22:00; Fr,Sa 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/on/fort-erie/644-garrison-road"
+  },
+  {
+    "lat": 44.35541466850733,
+    "lon": -79.64474739410207,
+    "name": "Taco Bell in Barrie, ON - 644 Yonge Street",
+    "addr": "644 Yonge Street, Barrie",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/on/barrie/644-yonge-street"
+  },
+  {
+    "lat": 43.644646090686344,
+    "lon": -79.3803857615338,
+    "name": "Taco Bell in Toronto, ON - 65 Front Street West, Unit 481",
+    "addr": "65 Front Street West, Unit 481, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:00-23:30",
+    "url": "https://locations.tacobell.ca/en/on/toronto/65-front-street-west-unit-481"
+  },
+  {
+    "lat": 43.089682038035185,
+    "lon": -79.10401487936522,
+    "name": "Taco Bell in Niagara Falls, ON - 6555 Lundy's Lane",
+    "addr": "6555 Lundy's Lane, Niagara Falls",
+    "opening_hours": "Mo,We,Th,Su 11:00-22:00; Tu,Fr,Sa 11:00-23:00",
+    "url": "https://locations.tacobell.ca/en/on/niagara-falls/6555-lundys-lane"
+  },
+  {
+    "lat": 43.141420652569934,
+    "lon": -80.23849976279757,
+    "name": "Taco Bell in Brantford, ON - 656 Colborne Street",
+    "addr": "656 Colborne Street, Brantford",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/brantford/656-colborne-street"
+  },
+  {
+    "lat": 42.311665029520874,
+    "lon": -82.94302987936518,
+    "name": "Taco Bell in Windsor, ON - 6707 Tecumseh Rd E",
+    "addr": "6707 Tecumseh Rd E, Windsor",
+    "opening_hours": "Mo,Tu,We,Su 10:30-01:00; Th 10:30-02:00; Fr,Sa 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/windsor/6707-tecumseh-rd-e"
+  },
+  {
+    "lat": 43.23444615457717,
+    "lon": -79.87890181595246,
+    "name": "Taco Bell in Hamilton, ON - 677 Upper James St",
+    "addr": "677 Upper James St, Hamilton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-02:00; Fr,Sa 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/hamilton/677-upper-james-st"
+  },
+  {
+    "lat": 49.92498037449375,
+    "lon": -97.10606590723035,
+    "name": "Taco Bell in Winnipeg, MB - 679 Henderson Highway",
+    "addr": "679 Henderson Highway, Winnipeg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/mb/winnipeg/679-henderson-highway"
+  },
+  {
+    "lat": 43.164644208098814,
+    "lon": -80.27407730512547,
+    "name": "Taco Bell in Brantford, ON - 68 King George Road",
+    "addr": "68 King George Road, Brantford",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/brantford/68-king-george-road"
+  },
+  {
+    "lat": 52.295497479835056,
+    "lon": -113.81299499842451,
+    "name": "Taco Bell in Red Deer, AB - 6889 50th Avenue",
+    "addr": "6889 50th Avenue, Red Deer",
+    "opening_hours": "Mo,Tu,We,Su 11:00-22:00; Th,Fr,Sa 11:00-22:30",
+    "url": "https://locations.tacobell.ca/en/ab/red-deer/6889-50th-avenue"
+  },
+  {
+    "lat": 49.239593392167215,
+    "lon": -124.05109156158446,
+    "name": "Taco Bell in Nanaimo, BC - 6896 Island Highway North",
+    "addr": "6896 Island Highway North, Nanaimo",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-22:00; Fr,Sa 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/bc/nanaimo/6896-island-highway-north"
+  },
+  {
+    "lat": 43.01430052372543,
+    "lon": -79.22813755102732,
+    "name": "Taco Bell in Welland, ON - 70 Primeway Drive",
+    "addr": "70 Primeway Drive, Welland",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/welland/70-primeway-drive"
+  },
+  {
+    "lat": 44.64932365934112,
+    "lon": -63.618155971343555,
+    "name": "Taco Bell in Halifax, NS - 7001 Mumford Road",
+    "addr": "7001 Mumford Road, Halifax",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 10:00-20:30; Su 12:00-17:00",
+    "url": "https://locations.tacobell.ca/en/ns/halifax/7001-mumford-road"
+  },
+  {
+    "lat": 43.798607951834185,
+    "lon": -79.42072167815206,
+    "name": "Taco Bell in Vaughan, ON - 7028 Yonge Street",
+    "addr": "7028 Yonge Street, Vaughan",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/on/vaughan/7028-yonge-street"
+  },
+  {
+    "lat": 44.59775414326671,
+    "lon": -79.45287575808821,
+    "name": "Taco Bell in Orillia, ON - 705 University Avenue",
+    "addr": "705 University Avenue, Orillia",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/orillia/705-university-avenue"
+  },
+  {
+    "lat": 43.71693861141299,
+    "lon": -79.63541312721564,
+    "name": "Taco Bell in Mississauga, ON - 7161 Goreway Drive",
+    "addr": "7161 Goreway Drive, Mississauga",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/on/mississauga/7161-goreway-drive"
+  },
+  {
+    "lat": 43.228741645047855,
+    "lon": -79.76938592600247,
+    "name": "Taco Bell in Hamilton, ON - 744 Queenston Rd N",
+    "addr": "744 Queenston Rd N, Hamilton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/hamilton/744-queenston-rd-n"
+  },
+  {
+    "lat": 49.900918289116326,
+    "lon": -97.15857615913771,
+    "name": "Taco Bell in Winnipeg, MB - 750 Sherbrook Street",
+    "addr": "750 Sherbrook Street, Winnipeg",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-22:00",
+    "url": "https://locations.tacobell.ca/en/mb/winnipeg/750-sherbrook-street"
+  },
+  {
+    "lat": 51.046119647878356,
+    "lon": -114.07091994785142,
+    "name": "Taco Bell in Calgary, AB - 751 3rd Street SW",
+    "addr": "751 3rd Street SW, Calgary",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 11:00-17:00; Su 12:00-17:00",
+    "url": "https://locations.tacobell.ca/en/ab/calgary/751-3rd-street-sw"
+  },
+  {
+    "lat": 43.3489223,
+    "lon": -79.7951251,
+    "name": "Taco Bell in Burlington, ON - 777 Guelph Line",
+    "addr": "777 Guelph Line, Burlington",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-19:00; Sa,Su 11:00-18:00",
+    "url": "https://locations.tacobell.ca/en/on/burlington/777-guelph-line"
+  },
+  {
+    "lat": 43.88290879223512,
+    "lon": -78.91198801892597,
+    "name": "Taco Bell in Whitby, ON - 80 Thickson Rd S",
+    "addr": "80 Thickson Rd S, Whitby",
+    "opening_hours": "Mo,Tu,We,Su 10:30-02:00; Th,Fr,Sa 10:30-03:00",
+    "url": "https://locations.tacobell.ca/en/on/whitby/80-thickson-rd-s"
+  },
+  {
+    "lat": 53.570694028270495,
+    "lon": -113.46515597262953,
+    "name": "Taco Bell in Edmonton, AB - 8036 118th Avenue",
+    "addr": "8036 118th Avenue, Edmonton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/ab/edmonton/8036-118th-avenue"
+  },
+  {
+    "lat": 43.1715199638716,
+    "lon": -80.23992033799209,
+    "name": "Taco Bell in Brantford, ON - 84 Lynden Road",
+    "addr": "84 Lynden Road, Brantford",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-21:00; Sa 11:00-18:00; Su 12:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/brantford/84-lynden-road"
+  },
+  {
+    "lat": 45.14000783278669,
+    "lon": -63.36196788513742,
+    "name": "Taco Bell in Stewiacke, NS - 87 West Main Street",
+    "addr": "87 West Main Street, Stewiacke",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-23:00; Fr,Sa 10:30-00:00",
+    "url": "https://locations.tacobell.ca/en/ns/stewiacke/87-west-main-street"
+  },
+  {
+    "lat": 53.521033814991256,
+    "lon": -113.59093801925657,
+    "name": "Taco Bell in Edmonton, AB - 8730 156 Street",
+    "addr": "8730 156 Street, Edmonton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/ab/edmonton/8730-156-street"
+  },
+  {
+    "lat": 49.16148617164972,
+    "lon": -122.89100064723873,
+    "name": "Taco Bell in Delta, BC - 8737 120 Street",
+    "addr": "8737 120 Street, Delta",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/bc/delta/8737-120-street"
+  },
+  {
+    "lat": 43.65801820049053,
+    "lon": -79.43493802250008,
+    "name": "Taco Bell in Toronto, ON - 900 Dufferin Street",
+    "addr": "900 Dufferin Street, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-22:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/900-dufferin-street"
+  },
+  {
+    "lat": 43.3258269,
+    "lon": -79.8208432,
+    "name": "Taco Bell in Burlington, ON - 900 Maple Avenue",
+    "addr": "900 Maple Avenue, Burlington",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-19:00; Sa 11:00-18:00; Su 11:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/burlington/900-maple-avenue"
+  },
+  {
+    "lat": 49.16738380688245,
+    "lon": -122.80081948094471,
+    "name": "Taco Bell in Surrey, BC - 9056 152nd Street",
+    "addr": "9056 152nd Street, Surrey",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-23:00",
+    "url": "https://locations.tacobell.ca/en/bc/surrey/9056-152nd-street"
+  },
+  {
+    "lat": 53.42545873653651,
+    "lon": -113.4766123376754,
+    "name": "Taco Bell in Edmonton, AB - 9260 Ellerslie Road SW",
+    "addr": "9260 Ellerslie Road SW, Edmonton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:00-01:30; Fr,Sa 10:00-02:00",
+    "url": "https://locations.tacobell.ca/en/ab/edmonton/9260-ellerslie-road-sw"
+  },
+  {
+    "lat": 45.24903330048502,
+    "lon": -66.10391760934179,
+    "name": "Taco Bell in Saint John, NB - 944 Fairville Blvd, Unit 2",
+    "addr": "944 Fairville Blvd, Unit 2, Saint John",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/nb/saint-john/944-fairville-blvd-unit-2"
+  },
+  {
+    "lat": 44.25619111516249,
+    "lon": -76.57187584716726,
+    "name": "Taco Bell in Kingston, ON - 945 Gardiners Road",
+    "addr": "945 Gardiners Road, Kingston",
+    "opening_hours": "Mo,Tu,We,Th,Fr 11:00-19:00; Sa,Su 11:00-17:00",
+    "url": "https://locations.tacobell.ca/en/on/kingston/945-gardiners-road"
+  },
+  {
+    "lat": 43.65629183759351,
+    "lon": -79.81466884180487,
+    "name": "Taco Bell in Brampton, ON - 9465 Mississauga Road",
+    "addr": "9465 Mississauga Road, Brampton",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-01:00; Fr,Sa 10:30-02:00",
+    "url": "https://locations.tacobell.ca/en/on/brampton/9465-mississauga-road"
+  },
+  {
+    "lat": 52.083718237553505,
+    "lon": -106.64698476488824,
+    "name": "Taco Bell in Saskatoon, SK - 950 Melville Ave",
+    "addr": "950 Melville Ave, Saskatoon",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 11:00-21:00",
+    "url": "https://locations.tacobell.ca/en/sk/saskatoon/950-melville-ave"
+  },
+  {
+    "lat": 42.77849097778341,
+    "lon": -81.1802035979886,
+    "name": "Taco Bell in Saint Thomas, ON - 950 Talbot Street",
+    "addr": "950 Talbot Street, Saint Thomas",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/saint-thomas/950-talbot-street"
+  },
+  {
+    "lat": 53.62180962390483,
+    "lon": -113.49098513067959,
+    "name": "Taco Bell in Edmonton, AB - 9626 160th Avenue East NW",
+    "addr": "9626 160th Avenue East NW, Edmonton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 10:00-23:00; Su 10:00-22:00",
+    "url": "https://locations.tacobell.ca/en/ab/edmonton/9626-160th-avenue-east-nw"
+  },
+  {
+    "lat": 43.62659774736464,
+    "lon": -79.6315317144575,
+    "name": "Taco Bell in Mississauga, ON - 985 Eglinton Avenue East",
+    "addr": "985 Eglinton Avenue East, Mississauga",
+    "opening_hours": "Mo,Tu,We,Th,Su 10:30-00:00; Fr,Sa 10:30-01:00",
+    "url": "https://locations.tacobell.ca/en/on/mississauga/985-eglinton-avenue-east"
+  },
+  {
+    "lat": 43.76104748414604,
+    "lon": -79.72001076280782,
+    "name": "Taco Bell in Brampton, ON - 9940 Airport Road",
+    "addr": "9940 Airport Road, Brampton",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59",
+    "url": "https://locations.tacobell.ca/en/on/brampton/9940-airport-road"
+  },
+  {
+    "lat": 43.217312,
+    "lon": -79.8602836,
+    "name": "Taco Bell in Hamilton, ON - 999 Upper Wentworth",
+    "addr": "999 Upper Wentworth, Hamilton",
+    "opening_hours": "Mo,Tu,We,Th,Fr 10:00-21:00; Sa 10:00-18:00; Su 11:00-18:00",
+    "url": "https://locations.tacobell.ca/en/on/hamilton/999-upper-wentworth"
+  },
+  {
+    "lat": 43.72558518220077,
+    "lon": -79.45220832944773,
+    "name": "Taco Bell in Toronto, ON - Unit FC11 - 3401 Dufferin St",
+    "addr": "Unit FC11 - 3401 Dufferin St, Toronto",
+    "opening_hours": "Mo,Tu,We,Th,Fr,Sa 10:00-21:00; Su 11:00-19:00",
+    "url": "https://locations.tacobell.ca/en/on/toronto/unit-fc11-3401-dufferin-st"
+  }
+]

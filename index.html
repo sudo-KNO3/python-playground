@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- preload the Rust→WASM finder so it's ready by the time the user taps the button -->
-<link rel="modulepreload" href="./pkg/tacobell_finder.js">
-<link rel="preload" href="./pkg/tacobell_finder_bg.wasm" as="fetch" type="application/wasm" crossorigin>
+<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=4">
+<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=4" as="fetch" type="application/wasm" crossorigin>
 <style>
   /* ---------- foundation ---------- */
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -282,7 +282,7 @@
     <!-- LOADING — shown after the user taps the button -->
     <section class="screen" id="screenLoading" aria-label="searching">
       <span class="big-emoji" id="loadEmoji">📡</span>
-      <p class="result-title" id="loadTitle">asking your phone where you are…</p>
+      <p class="result-title" id="loadTitle">asking your phone (GPS — give it a sec)…</p>
       <p class="result-meta" id="loadMeta">(say yes to the location prompt 🥺)</p>
       <div class="spinner"></div>
     </section>
@@ -326,7 +326,7 @@
 // 🦀 Load the Rust→WASM finder. Kicks off as soon as the document parses;
 // the WASM is preloaded (see <link rel="preload"> in <head>) so this is
 // effectively cached by the time the user taps the button.
-import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js";
+import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=4";
 
 window.wasmReady = init().then(() => {
   window.find_nearest_three = find_nearest_three;
@@ -369,10 +369,28 @@ function show(id) {
 function goHome() { show("screenHome"); }
 
 /* ---------- main flow ---------- */
+/* ---------- user location (set once geolocation succeeds, used by every map link) ---------- */
+let userLat = null;
+let userLon = null;
+
+/**
+ * Google Maps directions URL from the user's current position to (lat, lon).
+ * Falls back to a search query if we somehow don't have the user's coords yet.
+ */
+function googleMapsRouteUrl(lat, lon) {
+  if (userLat != null && userLon != null) {
+    return `https://www.google.com/maps/dir/?api=1` +
+           `&origin=${userLat},${userLon}` +
+           `&destination=${lat},${lon}` +
+           `&travelmode=driving`;
+  }
+  return `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
+}
+
 function findTacoBell() {
   show("screenLoading");
   document.getElementById("loadEmoji").textContent = "📡";
-  document.getElementById("loadTitle").textContent = "asking your phone where you are…";
+  document.getElementById("loadTitle").textContent = "asking your phone (GPS — give it a sec)…";
   document.getElementById("loadMeta").textContent = "(say yes to the location prompt 🥺)";
 
   if (!navigator.geolocation) {
@@ -380,14 +398,20 @@ function findTacoBell() {
   }
 
   navigator.geolocation.getCurrentPosition(
-    (pos) => queryTacoBells(pos.coords.latitude, pos.coords.longitude),
+    (pos) => {
+      userLat = pos.coords.latitude;
+      userLon = pos.coords.longitude;
+      queryTacoBells(userLat, userLon);
+    },
     (err) => {
       const msg = err.code === err.PERMISSION_DENIED
         ? "you denied the location prompt. no tacos for the suspicious. 🙄"
         : "couldn't figure out where you are. are you underground??";
       showError("ouch", msg);
     },
-    { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 }
+    // High accuracy = GPS on mobile. Slower cold start (5-15s) but ~10m
+    // accuracy instead of cell-triangulation's 10-40 km in rural areas.
+    { enableHighAccuracy: true, timeout: 30000, maximumAge: 60000 }
   );
 }
 
@@ -415,6 +439,9 @@ async function queryTacoBells(lat, lon) {
       "the dataset is empty somehow. that should never happen."
     );
   }
+
+
+
 
   // Shape the WASM output to the node shape that `renderResults`,
   // `formatAddress`, and `checkOpenStatus` already expect. The Rust
@@ -448,25 +475,31 @@ function renderResults(nodes) {
   statusEl.className = "nearest-status " + (openInfo.cls || "");
   statusEl.innerHTML = openInfo.text;
 
-  const isApple = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent);
-  const dLat = closest.lat, dLon = closest.lon;
-  const href = isApple
-    ? `http://maps.apple.com/?daddr=${dLat},${dLon}`
-    : `https://www.google.com/maps/dir/?api=1&destination=${dLat},${dLon}&travelmode=driving`;
-  document.getElementById("primaryMapBtn").href = href;
-  document.getElementById("primaryMapBtn").textContent = isApple ? "open in maps 🗺️" : "open in google maps 🗺️";
+  // Always use Google Maps with explicit origin = user's actual coords so
+  // Maps draws the route from here, not from whatever Maps guesses about
+  // your location.
+  document.getElementById("primaryMapBtn").href = googleMapsRouteUrl(closest.lat, closest.lon);
+  document.getElementById("primaryMapBtn").textContent = "open in google maps 🗺️";
 
-  // alt list
+  // alt list — each entry is a tappable link that opens a Google Maps
+  // route from your location to that store too.
   const alts = nodes.slice(1);
   const altUl = document.getElementById("altList");
   if (alts.length === 0) {
     altUl.innerHTML = "";
   } else {
-    altUl.innerHTML = '<li style="opacity:0.55; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; border-top:none; padding-bottom:2px;">other nearby</li>'
-      + alts.map(n => {
-        const d = n._d < 1 ? `${Math.round(n._d * 1000)} m` : `${n._d.toFixed(1)} km`;
-        return `<li><b>${d}</b> · ${formatAddress(n) || "Taco Bell"}</li>`;
-      }).join("");
+    const headerLi = '<li style="opacity:0.55; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; border-top:none; padding-bottom:2px;">other nearby — tap to route</li>';
+    altUl.innerHTML = headerLi + alts.map(n => {
+      const d = n._d < 1 ? `${Math.round(n._d * 1000)} m` : `${n._d.toFixed(1)} km`;
+      const href = googleMapsRouteUrl(n.lat, n.lon);
+      const label = formatAddress(n) || "Taco Bell";
+      return `<li><a href="${href}" target="_blank" rel="noopener"
+                     style="display:flex; gap:8px; align-items:center; color:inherit; text-decoration:none;">
+                <b style="flex-shrink:0;">${d}</b>
+                <span style="flex:1; min-width:0;">${label}</span>
+                <span style="opacity:0.55; flex-shrink:0;">🗺️</span>
+              </a></li>`;
+    }).join("");
   }
 
   // menu pick
