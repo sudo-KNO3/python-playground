@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- preload the Rust→WASM finder so it's ready by the time the user taps the button -->
-<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=4">
-<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=4" as="fetch" type="application/wasm" crossorigin>
+<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=5">
+<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=5" as="fetch" type="application/wasm" crossorigin>
 <style>
   /* ---------- foundation ---------- */
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -274,7 +274,7 @@
     <section class="screen active" id="screenHome" aria-label="home">
       <span class="big-emoji">🌮</span>
       <h1>where's my taco bell</h1>
-      <p class="tagline">tap. allow location. devour.</p>
+      <p class="tagline">tap. allow location. devour.<br><small style="font-size:0.72rem; opacity:0.65;">one-time use, nothing saved</small></p>
       <button class="btn btn-big" onclick="findTacoBell()">find me a taco bell 🌮</button>
       <p class="footer">made with too much creativity &amp; one of those&nbsp;crunchwraps</p>
     </section>
@@ -326,7 +326,7 @@
 // 🦀 Load the Rust→WASM finder. Kicks off as soon as the document parses;
 // the WASM is preloaded (see <link rel="preload"> in <head>) so this is
 // effectively cached by the time the user taps the button.
-import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=4";
+import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=5";
 
 window.wasmReady = init().then(() => {
   window.find_nearest_three = find_nearest_three;
@@ -374,6 +374,57 @@ let userLat = null;
 let userLon = null;
 
 /**
+ * After the user denies the geolocation prompt, the browser remembers that
+ * choice and won't re-prompt — calling getCurrentPosition again just fails
+ * silently with PERMISSION_DENIED. The only way back is for them to manually
+ * flip the switch in browser/OS settings. Return HTML instructions tailored
+ * to the device they're on.
+ */
+function permissionFixInstructionsHtml() {
+  const ua = navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua) ||
+                (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const isAndroid = /Android/.test(ua);
+  const isFirefox = /Firefox|FxiOS/.test(ua);
+
+  if (isIOS) {
+    return `
+      <b>iPhone / iPad:</b><br>
+      1. Open <b>Settings → Privacy &amp; Security → Location Services</b> &mdash; make sure it's on.<br>
+      2. Then <b>Settings → Safari → Location</b> (or your browser of choice) and set to <b>Ask</b> or <b>Allow</b>.<br>
+      3. Come back here and tap <b>try again</b>.
+    `;
+  }
+  if (isAndroid) {
+    return `
+      <b>Android:</b><br>
+      1. Tap the <b>🔒 lock</b> icon next to the URL.<br>
+      2. <b>Permissions → Location → Allow</b>.<br>
+      3. Tap <b>try again</b>.<br>
+      <small style="opacity:0.7;">If you don't see Location there, go to <b>Settings → Apps → (your browser) → Permissions → Location → Allow</b>.</small>
+    `;
+  }
+  if (isFirefox) {
+    return `
+      <b>Firefox:</b> click the small <b>⊕ icon</b> in the address bar
+      (left of <code>yesimthisgoofy.surge.sh</code>), set <b>Location</b> to <b>Allow</b>,
+      then tap <b>try again</b>.
+    `;
+  }
+  // Default — Chrome, Edge, desktop Safari
+  return `
+    Click the <b>🔒 lock</b> icon next to <code>yesimthisgoofy.surge.sh</code> in the address bar,
+    open <b>Site settings</b> (or <b>Permissions</b>), set <b>Location</b> to <b>Allow</b>,
+    then tap <b>try again</b>.
+  `;
+}
+
+/**
+ * Google Maps directions URL from the user's current position to (lat, lon).
+ * Falls back to a search query if we somehow don't have the user's coords yet.
+ */
+
+/**
  * Google Maps directions URL from the user's current position to (lat, lon).
  * Falls back to a search query if we somehow don't have the user's coords yet.
  */
@@ -404,14 +455,29 @@ function findTacoBell() {
       queryTacoBells(userLat, userLon);
     },
     (err) => {
-      const msg = err.code === err.PERMISSION_DENIED
-        ? "you denied the location prompt. no tacos for the suspicious. 🙄"
-        : "couldn't figure out where you are. are you underground??";
-      showError("ouch", msg);
+      if (err.code === err.PERMISSION_DENIED) {
+        showError(
+          "no location, no tacos 🙄",
+          `you tapped "no" on the location prompt. browsers <b>remember that choice</b>,
+           so "try again" alone won't re-ask — you have to flip the switch yourself first:
+           <br><br>
+           <span style="display:block; padding:12px 14px; background:rgba(255,255,255,0.06); border-radius:12px; font-size:0.92rem; line-height:1.45; text-align:left;">
+             ${permissionFixInstructionsHtml()}
+           </span>
+           <br>
+           <small style="opacity:0.6;">pick <b>"Allow once"</b> from the prompt if you don't want it saved — the site only reads your location for this one tap and stores nothing.</small>`
+        );
+      } else if (err.code === err.TIMEOUT) {
+        showError("hmm", "your phone took too long to find itself. step outside maybe? or just tap try again.");
+      } else {
+        showError("hmm", "couldn't figure out where you are. are you underground??");
+      }
     },
     // High accuracy = GPS on mobile. Slower cold start (5-15s) but ~10m
     // accuracy instead of cell-triangulation's 10-40 km in rural areas.
-    { enableHighAccuracy: true, timeout: 30000, maximumAge: 60000 }
+    // maximumAge: 0 → never reuse a cached position; always grab a fresh
+    // GPS read. Honors "one-time access" semantics.
+    { enableHighAccuracy: true, timeout: 30000, maximumAge: 0 }
   );
 }
 
