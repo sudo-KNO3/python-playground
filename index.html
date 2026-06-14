@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- preload the Rust→WASM finder so it's ready by the time the user taps the button -->
-<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=7">
-<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=7" as="fetch" type="application/wasm" crossorigin>
+<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=8">
+<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=8" as="fetch" type="application/wasm" crossorigin>
 <style>
   /* ---------- foundation ---------- */
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -352,13 +352,24 @@
 // 🦀 Load the Rust→WASM finder. Kicks off as soon as the document parses;
 // the WASM is preloaded (see <link rel="preload"> in <head>) so this is
 // effectively cached by the time the user taps the button.
-import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=7";
+import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=8";
 
 window.wasmReady = init().then(() => {
   window.find_nearest_three = find_nearest_three;
   window.tacoBellDatasetSize = dataset_size();
   console.log(`🦀 powered by Rust — ${window.tacoBellDatasetSize} Taco Bells baked in`);
 });
+
+// Register the service worker once the page is up. Caches the site after
+// first successful load so subsequent visits don't depend on surge being
+// healthy (and the site works offline / on bad cellular).
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch((err) =>
+      console.warn("sw registration failed:", err)
+    );
+  });
+}
 </script>
 
 <script>
