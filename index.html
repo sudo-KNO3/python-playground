@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- preload the Rust→WASM finder so it's ready by the time the user taps the button -->
-<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=6">
-<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=6" as="fetch" type="application/wasm" crossorigin>
+<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=7">
+<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=7" as="fetch" type="application/wasm" crossorigin>
 <style>
   /* ---------- foundation ---------- */
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -283,7 +283,29 @@
       <p class="footer">made with too much creativity &amp; one of those&nbsp;crunchwraps</p>
     </section>
 
-    <!-- LOADING — shown after the user taps the button -->
+    <!-- PRE-PROMPT — primer screen that fires BEFORE the browser's native
+         geolocation prompt. Misclicks on "never mind" here are harmless
+         (no permission state change). Only when the user taps "ask my
+         phone" do we call navigator.geolocation, triggering the real,
+         irreversible browser prompt. -->
+    <section class="screen" id="screenPrePrompt" aria-label="location primer">
+      <span class="big-emoji">📍</span>
+      <h1>quick heads up</h1>
+      <p class="tagline" style="margin-bottom: 14px;">
+        your phone is about to ask if<br>
+        <code style="font-size: 0.85em; opacity: 0.92; background: rgba(255,255,255,0.06); padding: 2px 8px; border-radius: 6px;">yesimthisgoofy.surge.sh</code><br>
+        can use your location.
+      </p>
+      <p class="tagline" style="font-size: 0.92rem; margin-bottom: 16px;">
+        tap <b>Allow</b> or <b>Allow Once</b> when it pops up 🌮<br>
+        <small style="opacity: 0.6; font-size: 0.78rem;">we read it once to find the nearest taco bells. nothing saved.</small>
+      </p>
+      <button class="btn btn-big" onclick="actuallyRequestLocation()">ask my phone 🌮</button>
+      <button class="btn ghost" onclick="goHome()" style="margin-top: 8px;">never mind</button>
+    </section>
+
+    <!-- LOADING — shown after the user accepts the pre-prompt and we're
+         actively waiting for the GPS fix -->
     <section class="screen" id="screenLoading" aria-label="searching">
       <span class="big-emoji" id="loadEmoji">📡</span>
       <p class="result-title" id="loadTitle">asking your phone (GPS — give it a sec)…</p>
@@ -330,7 +352,7 @@
 // 🦀 Load the Rust→WASM finder. Kicks off as soon as the document parses;
 // the WASM is preloaded (see <link rel="preload"> in <head>) so this is
 // effectively cached by the time the user taps the button.
-import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=6";
+import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=7";
 
 window.wasmReady = init().then(() => {
   window.find_nearest_three = find_nearest_three;
@@ -541,27 +563,48 @@ function googleMapsRouteUrl(lat, lon) {
   return `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
 }
 
+/**
+ * Gate-keeper. Decides what to show when the user taps the home-screen
+ * button:
+ *   - "denied"  → permission-denied guide (no point in priming if the
+ *                 browser won't show a prompt anyway).
+ *   - "granted" → skip the pre-prompt and go straight to GPS, since
+ *                 they've already said yes; no need to re-prime.
+ *   - "prompt"  → show the pre-prompt screen so any misclick happens on
+ *                 OUR side of the browser's native dialog.
+ *   - unknown   → assume "prompt" (older browsers without Permissions API).
+ */
 async function findTacoBell() {
-  show("screenLoading");
-  document.getElementById("loadEmoji").textContent = "📡";
-  document.getElementById("loadTitle").textContent = "asking your phone (GPS — give it a sec)…";
-  document.getElementById("loadMeta").textContent = "(say yes to the location prompt 🥺)";
-
   if (!navigator.geolocation) {
     return showError("hmm", "your browser doesn't do location. that's a problem.");
   }
 
-  // If the Permissions API tells us location is already blocked, skip the
-  // getCurrentPosition call that's going to fail immediately and go straight
-  // to the guide. Smoother UX than "tap → flash of loading → error".
   if (navigator.permissions && navigator.permissions.query) {
     try {
       const status = await navigator.permissions.query({ name: "geolocation" });
-      if (status.state === "denied") {
-        return showPermissionDeniedGuide();
-      }
+      if (status.state === "denied")  return showPermissionDeniedGuide();
+      if (status.state === "granted") return actuallyRequestLocation();
     } catch (e) { /* older browsers don't know "geolocation" — fall through */ }
   }
+
+  // Default: show the pre-prompt primer.
+  show("screenPrePrompt");
+}
+
+/**
+ * Actually invoke the browser's geolocation prompt. Called from:
+ *   - the pre-prompt's "ask my phone 🌮" button, after the user has
+ *     explicitly committed to allowing,
+ *   - findTacoBell() when permission is already "granted" and we don't
+ *     need a primer,
+ *   - the auto-retry path when the permission state changes from
+ *     "denied" to "granted" while the page is open.
+ */
+function actuallyRequestLocation() {
+  show("screenLoading");
+  document.getElementById("loadEmoji").textContent = "📡";
+  document.getElementById("loadTitle").textContent = "asking your phone (GPS — give it a sec)…";
+  document.getElementById("loadMeta").textContent = "(say yes to the location prompt 🥺)";
 
   navigator.geolocation.getCurrentPosition(
     (pos) => {
