@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
 <!-- preload the Rust→WASM finder so it's ready by the time the user taps the button -->
-<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=5">
-<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=5" as="fetch" type="application/wasm" crossorigin>
+<link rel="modulepreload" href="./pkg/tacobell_finder.js?v=6">
+<link rel="preload" href="./pkg/tacobell_finder_bg.wasm?v=6" as="fetch" type="application/wasm" crossorigin>
 <style>
   /* ---------- foundation ---------- */
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -275,6 +275,10 @@
       <span class="big-emoji">🌮</span>
       <h1>where's my taco bell</h1>
       <p class="tagline">tap. allow location. devour.<br><small style="font-size:0.72rem; opacity:0.65;">one-time use, nothing saved</small></p>
+
+      <!-- Filled in by checkPermissionStateOnLoad() if location is currently blocked. -->
+      <div id="permBanner" style="display:none;"></div>
+
       <button class="btn btn-big" onclick="findTacoBell()">find me a taco bell 🌮</button>
       <p class="footer">made with too much creativity &amp; one of those&nbsp;crunchwraps</p>
     </section>
@@ -326,7 +330,7 @@
 // 🦀 Load the Rust→WASM finder. Kicks off as soon as the document parses;
 // the WASM is preloaded (see <link rel="preload"> in <head>) so this is
 // effectively cached by the time the user taps the button.
-import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=5";
+import init, { find_nearest_three, dataset_size } from "./pkg/tacobell_finder.js?v=6";
 
 window.wasmReady = init().then(() => {
   window.find_nearest_three = find_nearest_three;
@@ -372,6 +376,105 @@ function goHome() { show("screenHome"); }
 /* ---------- user location (set once geolocation succeeds, used by every map link) ---------- */
 let userLat = null;
 let userLon = null;
+
+/**
+ * Run on page load. If the browser supports the Permissions API and reports
+ * the geolocation permission as "denied", show a clear banner on the home
+ * screen so the visitor knows BEFORE they tap the button. Also subscribe to
+ * `change` events on that permission so we can auto-retry the moment the
+ * visitor flips the switch in browser/OS settings (no need to tap try-again).
+ */
+async function checkPermissionStateOnLoad() {
+  if (!navigator.permissions || !navigator.permissions.query) return;
+  let status;
+  try {
+    status = await navigator.permissions.query({ name: "geolocation" });
+  } catch (e) {
+    return; // older browsers don't recognize the name
+  }
+
+  const banner = document.getElementById("permBanner");
+
+  function paintBanner() {
+    if (!banner) return;
+    if (status.state === "denied") {
+      banner.style.display = "block";
+      banner.innerHTML = `
+        <div style="
+          margin: 0 0 16px;
+          padding: 12px 14px;
+          background: rgba(255, 100, 100, 0.14);
+          border: 1px solid rgba(255, 100, 100, 0.45);
+          border-radius: 14px;
+          font-size: 0.88rem;
+          text-align: left;
+          line-height: 1.4;
+        ">
+          🔒 <b>location is currently blocked</b> for this site<br>
+          <small style="opacity: 0.85;">
+            Tap the button to see how to fix it, or
+            <a href="javascript:location.reload()"
+               style="color: #ffd23f; text-decoration: underline;">
+              close this tab and tap the link again
+            </a>
+            — usually the fastest fix.
+          </small>
+        </div>
+      `;
+    } else {
+      banner.style.display = "none";
+      banner.innerHTML = "";
+    }
+  }
+
+  paintBanner();
+
+  // Auto-retry the moment the visitor flips the toggle in browser/OS settings
+  // — no need for them to come back and tap "try again".
+  status.onchange = () => {
+    paintBanner();
+    // If we're stuck on the error screen and the visitor just granted
+    // permission, jump straight back into the search.
+    const errorActive = document.getElementById("screenError")
+      ?.classList.contains("active");
+    if (status.state === "granted" && (errorActive || isStillOnHome())) {
+      findTacoBell();
+    }
+  };
+}
+
+function isStillOnHome() {
+  return document.getElementById("screenHome")?.classList.contains("active");
+}
+
+// Kick off on page load.
+document.addEventListener("DOMContentLoaded", checkPermissionStateOnLoad);
+
+/**
+ * The shared "you've denied location, here's how to fix it" screen used by
+ * both the proactive Permissions-API check and the post-prompt-denial path.
+ */
+function showPermissionDeniedGuide() {
+  showError(
+    "no location, no tacos 🙄",
+    `location is blocked for this site. browsers <b>remember that choice</b>,
+     so "try again" alone won't re-ask — you have to flip the switch yourself first:
+     <br><br>
+     <span style="display:block; padding:12px 14px; background:rgba(255,255,255,0.06); border-radius:12px; font-size:0.92rem; line-height:1.45; text-align:left;">
+       ${permissionFixInstructionsHtml()}
+     </span>
+     <br>
+     <span style="display:block; padding:10px 12px; background:rgba(255,211,63,0.12); border:1px dashed rgba(255,211,63,0.4); border-radius:10px; font-size:0.85rem; text-align:left;">
+       💡 <b>quickest fix:</b> close this tab and tap the link again.
+       Most browsers treat a fresh tab as a new session and will prompt again.
+     </span>
+     <br>
+     <small style="opacity:0.6;">
+       Tip: when the prompt re-appears, pick <b>"Allow Once"</b> if you don't want it saved.
+       The site only reads your location for this one tap and stores nothing.
+     </small>`
+  );
+}
 
 /**
  * After the user denies the geolocation prompt, the browser remembers that
@@ -438,7 +541,7 @@ function googleMapsRouteUrl(lat, lon) {
   return `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
 }
 
-function findTacoBell() {
+async function findTacoBell() {
   show("screenLoading");
   document.getElementById("loadEmoji").textContent = "📡";
   document.getElementById("loadTitle").textContent = "asking your phone (GPS — give it a sec)…";
@@ -446,6 +549,18 @@ function findTacoBell() {
 
   if (!navigator.geolocation) {
     return showError("hmm", "your browser doesn't do location. that's a problem.");
+  }
+
+  // If the Permissions API tells us location is already blocked, skip the
+  // getCurrentPosition call that's going to fail immediately and go straight
+  // to the guide. Smoother UX than "tap → flash of loading → error".
+  if (navigator.permissions && navigator.permissions.query) {
+    try {
+      const status = await navigator.permissions.query({ name: "geolocation" });
+      if (status.state === "denied") {
+        return showPermissionDeniedGuide();
+      }
+    } catch (e) { /* older browsers don't know "geolocation" — fall through */ }
   }
 
   navigator.geolocation.getCurrentPosition(
@@ -456,17 +571,7 @@ function findTacoBell() {
     },
     (err) => {
       if (err.code === err.PERMISSION_DENIED) {
-        showError(
-          "no location, no tacos 🙄",
-          `you tapped "no" on the location prompt. browsers <b>remember that choice</b>,
-           so "try again" alone won't re-ask — you have to flip the switch yourself first:
-           <br><br>
-           <span style="display:block; padding:12px 14px; background:rgba(255,255,255,0.06); border-radius:12px; font-size:0.92rem; line-height:1.45; text-align:left;">
-             ${permissionFixInstructionsHtml()}
-           </span>
-           <br>
-           <small style="opacity:0.6;">pick <b>"Allow once"</b> from the prompt if you don't want it saved — the site only reads your location for this one tap and stores nothing.</small>`
-        );
+        showPermissionDeniedGuide();
       } else if (err.code === err.TIMEOUT) {
         showError("hmm", "your phone took too long to find itself. step outside maybe? or just tap try again.");
       } else {
